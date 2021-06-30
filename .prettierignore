@@ -1,0 +1,13 @@
+#modules
+node_modules/
+
+#builds/modules
+lib/
+dist/
+package-lock.json
+
+#ci/cd
+.github
+
+#doc/legal
+**/LICENSE
