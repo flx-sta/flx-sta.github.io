@@ -17,8 +17,8 @@
             "
           >
             <span class="sr-only">Open main menu</span>
-            <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
-            <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
+            <fa-icon icon="bars" v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+            <fa-icon icon="times" v-else class="block h-6 w-6" aria-hidden="true" />
           </DisclosureButton>
         </div>
         <div
@@ -91,12 +91,11 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/vue";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
 
 const navigation = [
-  { name: "Home", href: "#", current: true },
-  { name: "Skills", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
+  { name: "About Me", href: "#about-me", current: true },
+  { name: "Skills", href: "#skills", current: false },
+  { name: "Projects", href: "#projects", current: false },
 ];
 
 export default defineComponent({
@@ -108,9 +107,6 @@ export default defineComponent({
     MenuButton,
     MenuItem,
     MenuItems,
-    BellIcon,
-    MenuIcon,
-    XIcon,
   },
   setup() {
     const open = ref(false);
