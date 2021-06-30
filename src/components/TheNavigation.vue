@@ -34,7 +34,7 @@
           <div class="flex-shrink-0 flex items-center">
             <img
               class="block h-9 w-auto"
-              src="@/assets/logo-bw.svg"
+              src="@/assets/logo-blue.svg"
               alt="Felix Pütz"
             />
           </div>
