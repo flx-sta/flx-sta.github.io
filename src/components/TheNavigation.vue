@@ -1,5 +1,5 @@
 <template>
-  <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
+  <Disclosure as="nav" class="bg-gray-700" v-slot="{ open }">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -34,8 +34,8 @@
           <div class="flex-shrink-0 flex items-center">
             <img
               class="block h-9 w-auto"
-              src="@/assets/logo-blue.svg"
-              alt="Felix Pütz"
+              src="@/assets/logo.svg"
+              alt="Logo"
             />
           </div>
           <h1 class="flex items-center ml-5 text-white text-3xl tracking-wider">Felix Pütz</h1>

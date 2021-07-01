@@ -1,25 +1,13 @@
 <template>
   <TheNavigation />
   <main>
-    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-      <ProfileCard id="about-me" />
+    <div class="w-full mx-auto">
+      <AboutMeSection id="about-me" />
 
-      <!-- Replace with your content -->
-      <div id="skills" class="px-4 py-6 sm:px-0">
-        <div
-          class="
-            border-4 border-dashed border-gray-200
-            rounded-lg
-            h-96
-            flex
-            justify-center
-            items-center
-          "
-        >
-          SKILLS
-        </div>
-      </div>
-      <!-- /End replace -->
+      <SkillsSection id="skills" class="mt-36"/>
+
+      <!-- div id="skills" class="px-4 py-6 sm:px-0">
+      </div -->
 
       <!-- Replace with your content -->
       <div id="projects" class="px-4 py-6 sm:px-0">
@@ -44,11 +32,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TheNavigation from './components/TheNavigation.vue';
-import ProfileCard from './components/ProfileCard.vue';
+import AboutMeSection from './components/AboutMeSection.vue';
+import SkillsSection from './components/SkillsSection.vue';
 
 export default defineComponent({
   name: 'App',
-  components: { TheNavigation, ProfileCard },
+  components: { TheNavigation, AboutMeSection, SkillsSection },
 });
 </script>
 
@@ -57,5 +46,9 @@ export default defineComponent({
 
 html {
   scroll-behavior: smooth;
+}
+
+.section-wrapper::nth-child(even) {
+  background-color: 'blue' !important;
 }
 </style>
