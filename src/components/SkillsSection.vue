@@ -1,6 +1,6 @@
 <template>
   <SectionWrapper title="Skills">
-    <canvas ref="canvas" id="myChart" width="400" class="h-5"></canvas>
+    <canvas ref="canvas" id="myChart" width="200" style="max-height: 200px;"></canvas>
   </SectionWrapper>
 </template>
 
