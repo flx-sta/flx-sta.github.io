@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import skills from '@/assets/skills.jsonc';
+import skills from '@/assets/skills.json';
 import { Chart, ChartItem, registerables } from 'chart.js';
 import { defineComponent } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
