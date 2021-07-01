@@ -1,6 +1,13 @@
 <template>
   <SectionWrapper title="Skills">
-    <canvas ref="canvas" id="myChart" width="200" style="max-height: 200px;"></canvas>
+    <div class="flex justify-center items-center w-full">
+      <canvas
+        ref="canvas"
+        id="myChart"
+        width="200"
+        style="max-height: 300px; max-width: 1000px"
+      ></canvas>
+    </div>
   </SectionWrapper>
 </template>
 

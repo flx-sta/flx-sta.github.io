@@ -17,8 +17,18 @@
             "
           >
             <span class="sr-only">Open main menu</span>
-            <fa-icon icon="bars" v-if="!open" class="block h-6 w-6" aria-hidden="true" />
-            <fa-icon icon="times" v-else class="block h-6 w-6" aria-hidden="true" />
+            <fa-icon
+              icon="bars"
+              v-if="!open"
+              class="block h-6 w-6"
+              aria-hidden="true"
+            />
+            <fa-icon
+              icon="times"
+              v-else
+              class="block h-6 w-6"
+              aria-hidden="true"
+            />
           </DisclosureButton>
         </div>
         <div
@@ -32,26 +42,26 @@
           "
         >
           <div class="flex-shrink-0 flex items-center">
-            <img
-              class="block h-9 w-auto"
-              src="@/assets/logo.svg"
-              alt="Logo"
-            />
+            <img class="block h-9 w-auto" src="@/assets/logo.svg" alt="Logo" />
           </div>
-          <h1 class="flex items-center ml-5 text-white text-3xl tracking-wider">Felix Pütz</h1>
+          <h1 class="flex items-center ml-5 text-white text-3xl tracking-wider">
+            Felix Pütz
+          </h1>
           <div class="hidden sm:block ml-auto">
             <div class="flex space-x-4 h-full items-center">
               <a
                 v-for="item in navigation"
                 :key="item.name"
-                :href="item.href"
-                :class="[
-                  item.current
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'px-3 py-2 rounded-md text-sm font-medium',
-                ]"
-                :aria-current="item.current ? 'page' : undefined"
+                :href="item.url"
+                class="
+                  text-gray-300
+                  hover:bg-gray-700 hover:text-white
+                  px-3
+                  py-2
+                  rounded-md
+                  text-sm
+                  font-medium
+                "
                 >{{ item.name }}</a
               >
             </div>
@@ -65,14 +75,17 @@
         <a
           v-for="item in navigation"
           :key="item.name"
-          :href="item.href"
-          :class="[
-            item.current
-              ? 'bg-gray-900 text-white'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-            'block px-3 py-2 rounded-md text-base font-medium',
-          ]"
-          :aria-current="item.current ? 'page' : undefined"
+          :href="item.url"
+          class="
+            text-gray-300
+            hover:bg-gray-700 hover:text-white
+            block
+            px-3
+            py-2
+            rounded-md
+            text-base
+            font-medium
+          "
           >{{ item.name }}</a
         >
       </div>
@@ -81,7 +94,7 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent } from 'vue';
 import {
   Disclosure,
   DisclosureButton,
@@ -90,12 +103,17 @@ import {
   MenuButton,
   MenuItem,
   MenuItems,
-} from "@headlessui/vue";
+} from '@headlessui/vue';
 
-const navigation = [
-  { name: "About Me", href: "#about-me", current: true },
-  { name: "Skills", href: "#skills", current: false },
-  { name: "Projects", href: "#projects", current: false },
+interface NavigationItem {
+  name: string;
+  url: string;
+}
+
+const navigation: NavigationItem[] = [
+  { name: 'About Me', url: '#about-me' },
+  { name: 'Skills', url: '#skills' },
+  { name: 'Projects', url: '#projects' },
 ];
 
 export default defineComponent({
@@ -115,6 +133,9 @@ export default defineComponent({
       navigation,
       open,
     };
+  },
+  methods: {
+    setActiveNavigation(item: NavigationItem) {},
   },
 });
 </script>
