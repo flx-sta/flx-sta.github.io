@@ -1,0 +1,7 @@
+{
+  "MySQL": 75,
+  "PostgreSQL": 75,
+  "NoSQL": 70,
+  "firebase": 60,
+  "DynamoDB": 60
+}

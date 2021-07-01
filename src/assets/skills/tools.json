@@ -1,0 +1,7 @@
+{
+  "Vue.js": 100,
+  "react": 75,
+  "socket.io": 60,
+  "angular": 40,
+  "svelte": 30
+}

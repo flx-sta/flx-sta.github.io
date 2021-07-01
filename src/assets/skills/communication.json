@@ -1,0 +1,5 @@
+{
+  "REST": 100,
+  "WebSocket": 80,
+  "socket.io": 60
+}

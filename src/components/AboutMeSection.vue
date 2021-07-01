@@ -1,7 +1,7 @@
 <template>
   <SectionWrapper title="About Me">
     <div
-      class="max-w-4xl flex items-center h-auto flex-wrap mx-auto my-32 lg:my-0"
+      class="max-w-4xl flex items-center h-auto flex-wrap mx-auto mt-32 lg:my-0"
     >
       <!--Main Col-->
       <div
@@ -61,7 +61,7 @@
             "
           >
             <fa-icon icon="briefcase" class="h-5 w-5 mr-4 text-green-700" />
-            Front-End Developer
+            Full Stack Developer
           </p>
           <p
             class="
@@ -78,9 +78,10 @@
             Cologne, Germany
           </p>
           <p class="py-8 text-sm">
-            Here will be a short description of myself in the future.<br />
-            About stuff I did.<br />
-            About stuff i do
+            As an experienced developer I'm always looking for new challenges. I
+            love to try out new technologies or getting more insight into the
+            known ones. My main focus is on javascript/typescript and its major
+            tools like Node.js, Vue.js, Electron etc.
           </p>
 
           <div
@@ -130,8 +131,9 @@
 </template>
 
 <script lang="ts">
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
 import profilePicture from '@/assets/profile-picture.jpg';
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
+import { defineComponent } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
 
 const contactLinks = [
@@ -165,7 +167,7 @@ const navigation = [
   { name: 'Company', href: '#' },
 ];
 
-export default {
+export default defineComponent({
   components: {
     Popover,
     PopoverButton,
@@ -179,5 +181,5 @@ export default {
       contactLinks,
     };
   },
-};
+});
 </script>

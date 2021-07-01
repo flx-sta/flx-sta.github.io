@@ -1,30 +1,12 @@
 <template>
   <TheNavigation />
   <main>
-    <div class="w-full mx-auto">
+    <div class="w-full mx-auto mt-12">
       <AboutMeSection id="about-me" />
 
-      <SkillsSection id="skills" class="mt-36"/>
+      <SkillsSection id="skills" class="mt-12" />
 
-      <!-- div id="skills" class="px-4 py-6 sm:px-0">
-      </div -->
-
-      <!-- Replace with your content -->
-      <div id="projects" class="px-4 py-6 sm:px-0">
-        <div
-          class="
-            border-4 border-dashed border-gray-200
-            rounded-lg
-            h-96
-            flex
-            justify-center
-            items-center
-          "
-        >
-          Projects
-        </div>
-      </div>
-      <!-- /End replace -->
+      <ProjectsSection id="projects" class="mt-12" />
     </div>
   </main>
 </template>
@@ -34,10 +16,11 @@ import { defineComponent } from 'vue';
 import TheNavigation from './components/TheNavigation.vue';
 import AboutMeSection from './components/AboutMeSection.vue';
 import SkillsSection from './components/SkillsSection.vue';
+import ProjectsSection from './components/ProjectsSection.vue';
 
 export default defineComponent({
   name: 'App',
-  components: { TheNavigation, AboutMeSection, SkillsSection },
+  components: { TheNavigation, AboutMeSection, SkillsSection, ProjectsSection },
 });
 </script>
 
