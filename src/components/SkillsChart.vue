@@ -8,9 +8,9 @@
       border-2
       p-5
       shadow-lg
-      transition-all
+      transform
       duration-500
-      hover:px-2
+      hover:scale-105
     "
   >
     <h2
@@ -37,7 +37,8 @@
 
 <script lang="ts">
 import { Chart, ChartConfiguration, ChartItem } from 'chart.js';
-import { defineComponent, Ref, ref } from 'vue';
+import { defineComponent, Ref, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
   props: {
@@ -52,9 +53,11 @@ export default defineComponent({
   },
   setup() {
     const chart: Ref<Chart | null> = ref(null);
+    const { t } = useI18n({ inheritLocale: true });
 
     return {
       chart,
+      t,
     };
   },
   computed: {
@@ -107,7 +110,7 @@ export default defineComponent({
       };
     },
     maxHeight() {
-      return `${this.data.length * 40}px`;
+      return `${this.data.length * 45}px`;
     },
   },
   mounted() {

@@ -6,40 +6,45 @@
   >
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center h-16">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <!-- Mobile menu button-->
-          <DisclosureButton
-            class="
-              inline-flex
-              items-center
-              justify-center
-              p-2
-              rounded-md
-              text-gray-400
-              hover:text-white hover:bg-gray-700
-              focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white
-            "
-          >
-            <span class="sr-only">Open main menu</span>
-            <fa-icon
-              icon="bars"
-              v-if="!open"
-              class="block h-6 w-6"
-              aria-hidden="true"
-            />
-            <fa-icon
-              icon="times"
-              v-else
-              class="block h-6 w-6"
-              aria-hidden="true"
-            />
-          </DisclosureButton>
+        <div class="inset-y-0 left-0 flex items-center sm:hidden">
+          <div class="w-14">
+            <!-- Mobile menu button-->
+            <DisclosureButton
+              class="
+                inline-flex
+                items-center
+                justify-center
+                p-2
+                rounded-md
+                text-gray-400
+                hover:text-white hover:bg-gray-700
+                focus:outline-none
+                focus:ring-2
+                focus:ring-inset
+                focus:ring-white
+              "
+            >
+              <span class="sr-only">Open main menu</span>
+              <fa-icon
+                icon="bars"
+                v-if="!open"
+                class="block h-6 w-6"
+                aria-hidden="true"
+              />
+              <fa-icon
+                icon="times"
+                v-else
+                class="block h-6 w-6"
+                aria-hidden="true"
+              />
+            </DisclosureButton>
+          </div>
         </div>
         <div
           class="
             flex-1 flex
             items-center
-            justify-center
+            justify-between
             sm:items-stretch sm:justify-start
             h-full
             w-full
@@ -70,6 +75,9 @@
               >
             </div>
           </div>
+          <div class="h-16 ml-5 flex items-center">
+            <LanguageDropDown />
+          </div>
         </div>
       </div>
     </div>
@@ -98,7 +106,6 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue';
 import {
   Disclosure,
   DisclosureButton,
@@ -108,17 +115,14 @@ import {
   MenuItem,
   MenuItems,
 } from '@headlessui/vue';
+import { computed, defineComponent, reactive, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+import LanguageDropDown from './LanguageDropDown.vue';
 
 interface NavigationItem {
   name: string;
   url: string;
 }
-
-const navigation: NavigationItem[] = [
-  { name: 'About Me', url: '#about-me' },
-  { name: 'Skills', url: '#skills' },
-  { name: 'Projects', url: '#projects' },
-];
 
 export default defineComponent({
   components: {
@@ -129,17 +133,34 @@ export default defineComponent({
     MenuButton,
     MenuItem,
     MenuItems,
+    LanguageDropDown,
   },
   setup() {
     const open = ref(false);
+    const { t, locale } = useI18n({ inheritLocale: true });
+    const navigation = computed(() => [
+      { name: t('About Me'), url: '#about-me' },
+      { name: t('Skills'), url: '#skills' },
+      { name: t('Projects'), url: '#projects' },
+    ]);
 
     return {
       navigation,
       open,
+      t,
+      locale,
     };
-  },
-  methods: {
-    setActiveNavigation(item: NavigationItem) {},
   },
 });
 </script>
+
+<i18n lang="yaml">
+en:
+  About Me: About Me
+  Skills: Skills
+  Projects: Projects
+de:
+  About Me: Über Mich
+  Skills: Kompetenzen
+  Projects: Projekte
+</i18n>

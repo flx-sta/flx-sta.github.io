@@ -9,9 +9,9 @@
       shadow-lg
       rounded-lg
       border-2
-      transition-all
+      transform
       duration-500
-      hover:px-6
+      hover:scale-105
     "
   >
     <div class="flex justify-center md:justify-end -mt-16">

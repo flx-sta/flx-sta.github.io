@@ -1,5 +1,5 @@
 <template>
-  <SectionWrapper title="About Me">
+  <SectionWrapper :title="t('About Me')">
     <div
       class="max-w-4xl flex items-center h-auto flex-wrap mx-auto mt-32 lg:my-0"
     >
@@ -100,7 +100,7 @@
             <a
               v-for="contactLink in contactLinks"
               :key="contactLink.title"
-              class="link"
+              class="link transform duration-500 hover:scale-125"
               :href="contactLink.url"
               target="_blank"
               :title="contactLink.title"
@@ -135,6 +135,7 @@ import profilePicture from '@/assets/profile-picture.jpg';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
 import { defineComponent } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
+import { useI18n } from 'vue-i18n';
 
 const contactLinks = [
   {
@@ -160,13 +161,6 @@ const contactLinks = [
   },
 ];
 
-const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-];
-
 export default defineComponent({
   components: {
     Popover,
@@ -175,11 +169,19 @@ export default defineComponent({
     SectionWrapper,
   },
   setup() {
+    const { t } = useI18n({ inheritLocale: true });
     return {
-      navigation,
       profilePicture,
       contactLinks,
+      t,
     };
   },
 });
 </script>
+
+<i18n lang="yaml">
+en:
+  About Me: About Me
+de:
+  About Me: Über Mich
+</i18n>
