@@ -1,0 +1,9 @@
+{
+  "title": "CI / CD",
+  "data": {
+    "gitlab-ci": 70,
+    "github-ci": 70,
+    "jenkins": 50,
+    "travis": 50
+  }
+}

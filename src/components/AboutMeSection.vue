@@ -144,7 +144,7 @@ const contactLinks = [
   },
   {
     title: 'Mail',
-    url: 'mailto:FPuetz@gmx.net?subject=Website contact',
+    url: 'mailto:FPuetz@gmx.net?subject=Contact via felix-puetz.com',
     icon: 'paper-plane',
   },
   {

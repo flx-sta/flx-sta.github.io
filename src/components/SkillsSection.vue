@@ -1,86 +1,31 @@
 <template>
   <SectionWrapper title="Skills">
-    <div class="flex justify-center items-center w-full">
-      <canvas ref="canvas" id="myChart" width="200" class="max-h-56"></canvas>
+    <div class="skills-charts-wrapper grid lg:grid-cols-2 grid-cols-1 gap-6">
+      <SkillsChart
+      v-for="skill in skills"
+      :key="`skill-chart-${skill.title}`"
+      :title="skill.title"
+      :collection="skill.data"
+    />
     </div>
   </SectionWrapper>
 </template>
 
 <script lang="ts">
-import * as skills from '@/assets/skills';
-import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
+import skills from '@/assets/skills';
+import { BarController, BarElement, CategoryScale, Chart, LinearScale } from 'chart.js';
 import { defineComponent } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
+import SkillsChart from './SkillsChart.vue';
 
-Chart.register(...registerables);
-
-const getChartConfig = {
-  options: {
-    responsive: true,
-    maintainAspectRatio: true,
-    indexAxis: 'y',
-    scales: {
-      xAxis: {
-        display: false,
-      },
-    },
-    plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        enabled: false,
-      },
-    },
-  },
-};
+Chart.register(BarElement, CategoryScale, BarController, LinearScale);
 
 export default defineComponent({
-  components: { SectionWrapper },
-  mounted() {
-    const canvas = this.$refs.canvas as HTMLCanvasElement;
-    var ctx = canvas.getContext('2d') as ChartItem;
-
-    new Chart(ctx, this.getChartConfig(skills.languages));
-  },
-  methods: {
-    getChartConfig(jsonData: object): ChartConfiguration {
-      const labels = Object.keys(jsonData);
-      const data = Object.values(jsonData);
-
-      return {
-        type: 'bar',
-        data: {
-          labels,
-          datasets: [
-            {
-              indexAxis: 'y',
-              label: 'My First Dataset',
-              data,
-              backgroundColor: ['#047857', '#374151'],
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          indexAxis: 'y',
-          scales: {
-            xAxis: {
-              display: false,
-            },
-          },
-          plugins: {
-            legend: {
-              display: false,
-            },
-            tooltip: {
-              enabled: false,
-            },
-          },
-        },
-      };
-    },
+  components: { SectionWrapper, SkillsChart },
+  setup() {
+    return {
+      skills,
+    };
   },
 });
 </script>

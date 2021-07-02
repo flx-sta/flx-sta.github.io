@@ -1,6 +1,6 @@
 <template>
   <SectionWrapper title="Projects">
-    <div class="project-card-wrapper flex flex-column flex-wrap mt-10">
+    <div class="project-card-wrapper grid lg:grid-cols-2 grid-cols-1 gap-5 mt-10">
       <ProjectCard
         v-for="project in projects"
         :img="project.img"

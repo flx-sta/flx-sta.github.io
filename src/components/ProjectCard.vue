@@ -1,16 +1,17 @@
 <template>
   <div
     class="
-      max-w-md
+      w-full
       py-4
       px-8
+      mt-10
       bg-white
       shadow-lg
       rounded-lg
-      my-10
-      mx-7
       border-2
-      hover:m
+      transition-all
+      duration-500
+      hover:px-6
     "
   >
     <div class="flex justify-center md:justify-end -mt-16">
@@ -50,8 +51,8 @@ interface ProjectLink {
 }
 
 interface ProjectTag {
-  title: string,
-  icon: string |string[]
+  title: string;
+  icon: string | string[];
 }
 
 export default defineComponent({
@@ -69,8 +70,8 @@ export default defineComponent({
       required: true,
     },
     tags: {
-      type: Array as () => ProjectTag[]
-    }
+      type: Array as () => ProjectTag[],
+    },
   },
 });
 </script>

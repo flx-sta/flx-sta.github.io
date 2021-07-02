@@ -1,7 +1,10 @@
 {
-  "javascript": 100,
-  "typescript": 95,
-  "php": 65,
-  "java": 60,
-  "python": 50
+  "title": "Languages",
+  "data": {
+    "javascript": 100,
+    "typescript": 98,
+    "php": 60,
+    "java": 60,
+    "python": 55
+  }
 }

@@ -1,5 +1,8 @@
 {
-  "end to end ": 100,
-  "unit": 90,
-  "integration": 80
+  "title": "Testing",
+  "data": {
+    "end to end ": 100,
+    "unit": 90,
+    "integration": 80
+  }
 }
