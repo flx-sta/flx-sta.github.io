@@ -14,32 +14,34 @@
   >
     <div>&copy; {{ fullYear }} Felix Pütz</div>
     <div>
-      <a href="#footer" @click="showTermsAndConditions = true"
-        >Terms and Conditions</a
-      >
+      <a href="mailto:fpuetz@gmx.net?subject=contact via felix-puetz.com">
+        {{ t('contact') }}
+      </a>
     </div>
-    <AppModal
-      :open="showTermsAndConditions"
-      @close="showTermsAndConditions = false"
-    >
-      <TermsAndConditions />
-    </AppModal>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import AppModal from './AppModal.vue';
-import TermsAndConditions from './TermsAndConditions.vue';
+import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
   setup() {
-    const showTermsAndConditions = ref(false);
+    const { t } = useI18n({ inheritLocale: true });
+
     return {
+      t,
       fullYear: new Date().getFullYear(),
-      showTermsAndConditions,
     };
   },
-  components: { AppModal, TermsAndConditions },
+  components: {},
 });
 </script>
+
+<i18n lang="yaml">
+  en:
+    contact: Contact
+  de:
+    contact: Kontakt
+  </i18n>
+  

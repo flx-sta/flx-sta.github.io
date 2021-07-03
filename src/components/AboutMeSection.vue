@@ -1,5 +1,5 @@
 <template>
-  <SectionWrapper :title="t('About Me')">
+  <SectionWrapper :title="t('title')">
     <div
       class="max-w-4xl flex items-center h-auto flex-wrap mx-auto mt-32 lg:my-0"
     >
@@ -61,7 +61,7 @@
             "
           >
             <fa-icon icon="briefcase" class="h-5 w-5 mr-4 text-green-700" />
-            Full Stack Developer
+            {{ t('jobTitle') }}
           </p>
           <p
             class="
@@ -75,13 +75,10 @@
             "
           >
             <fa-icon icon="map-marker-alt" class="h5 w-5 mr-4 text-green-700" />
-            Cologne, Germany
+            {{ t('city') }}, {{ t('country') }}
           </p>
           <p class="py-8 text-sm">
-            As an experienced developer I'm always looking for new challenges. I
-            love to try out new technologies or getting more insight into the
-            known ones. My main focus is on javascript/typescript and its major
-            tools like Node.js, Vue.js, Electron etc.
+            {{ t('description') }}
           </p>
 
           <div
@@ -144,7 +141,7 @@ const contactLinks = [
     icon: ['fab', 'github'],
   },
   {
-    title: 'Mail',
+    title: 'E-Mail',
     url: 'mailto:FPuetz@gmx.net?subject=Contact via felix-puetz.com',
     icon: 'envelope',
   },
@@ -181,7 +178,24 @@ export default defineComponent({
 
 <i18n lang="yaml">
 en:
-  About Me: About Me
+  title: About Me
+  jobTitle: Full Stack Developer
+  city: Cologne
+  country: Germany
+  description: >
+    As an experienced developer I'm always looking for new challenges.
+    I love to try out new technologies or getting more insight into the
+    known ones. My main focus is on javascript/typescript and its major
+    tools like Node.js, Vue.js, Electron etc.
 de:
-  About Me: Über Mich
+  title: Über Mich
+  jobTitle: Full Stack Entwickler
+  city: Köln
+  country: Deutschland
+  description: >
+    Als erfahrener Entwickler suche ich immer nach neuen Herausforderungen.
+    Ich liebe es neue Technologien auszuprobieren oder ein tiefern Einblick 
+    in mir bekannte Technologien zu werfen.
+    Mein Fokus liegt auf Javascript/Typescript und die 
+    Haupttools Node.js, Vue.js, Electron etc.
 </i18n>

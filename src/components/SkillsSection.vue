@@ -1,5 +1,5 @@
 <template>
-  <SectionWrapper title="Skills">
+  <SectionWrapper :title="t('title')">
     <div class="skills-charts-wrapper grid lg:grid-cols-2 grid-cols-1 gap-6">
       <SkillsChart
         v-for="(skill, key) in skills"
@@ -32,16 +32,13 @@ export default defineComponent({
     const { t } = useI18n({ inheritLocale: true });
 
     const skills = computed(() => [
-      { title: t('Programming languages'), data: programmingLanguages },
-      { title: t('Tools'), data: tools },
-      { title: t('Communication'), data: communication },
-      { title: t('Databases'), data: databases },
-      { title: t('Testing'), data: testing },
-      { title: t('CI / CD'), data: cicd },
-      {
-        title: t('Languages'),
-        data: languages,
-      },
+      { title: t('programmingLanguages.title'), data: programmingLanguages },
+      { title: t('tools.title'), data: tools },
+      { title: t('communication.title'), data: communication },
+      { title: t('databases.title'), data: databases },
+      { title: t('testing.title'), data: testing },
+      { title: t('cidcd.title'), data: cicd },
+      { title: t('languages.title'), data: languages, },
     ]);
 
     return {
@@ -105,19 +102,35 @@ const languages = {
 
 <i18n lang="yaml">
 en:
-  Programming languages: Programming languages
-  Tools: Tools
-  Communication: Communication
-  Databases: Databases
-  Testing: Testing
-  CI / CD: CI / CD
-  Languages: Languages
+  title: Skills
+  programmingLanguages:
+    title: Programming languages
+  tools:
+    title: Tools
+  communication:
+    title: Communication
+  databases:
+    title: Databases
+  testing:
+    title: Testing
+  cidcd:
+    title: CI / CD
+  languages:
+    title: Languages
 de:
-  Programming languages: Programmiersprachen
-  Tools: Tools
-  Communication: Kommunikation
-  Databases: Datenbanken
-  Testing: Testing
-  CI / CD: CI / CD
-  Languages: Sprachen
+  title: Kompetenzen
+  programmingLanguages:
+    title: Programmiersprachen
+  tools:
+    title: Tools
+  communication:
+    title: Kommunikation
+  databases:
+    title: Datenbanken
+  testing:
+    title: Testing
+  cidcd:
+    title: CI / CD
+  languages:
+    title: Sprachen
 </i18n>

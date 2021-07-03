@@ -47,7 +47,7 @@
               right-0
               uppercase
             "
-            @click="select(item)"
+            @click.prevent="select(item)"
           >
             {{ item }}
             <fa-icon icon="check" :class="{ 'opacity-0': item !== locale }" />
