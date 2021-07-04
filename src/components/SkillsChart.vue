@@ -108,7 +108,6 @@ export default defineComponent({
     };
 
     return {
-      ...props,
       t,
       chart,
       data,

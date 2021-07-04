@@ -14,10 +14,9 @@
   cursor: default;
 }
 
-.border-animation-left-right-left:before {
+.border-animation-left-right-left::before {
   position: absolute;
   transition: 0.5s;
-  transition-delay: .5s;
   content: '';
   width: 0;
   bottom: 0;
@@ -26,7 +25,7 @@
   right: 0;
 }
 
-.border-animation-left-right-left:after {
+.border-animation-left-right-left::after {
   position: absolute;
   transition: 0.5s;
   content: '';
@@ -42,12 +41,12 @@
   cursor: default;
 }
 
-.border-animation-left-right-left.in-view:before {
+.border-animation-left-right-left.in-view::before {
   width: 100%;
   right: 0;
 }
 
-.border-animation-left-right-left.in-view:after {
+.border-animation-left-right-left.in-view::after {
   width: 100%;
   left: 0;
 }

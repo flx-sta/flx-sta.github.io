@@ -28,20 +28,19 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup() {
     return {
-      ...props,
       ...useIntersectionObserver(({ target, isIntersecting }) => {
         if (isIntersecting) {
-          target.classList.add('in-view');
+          setTimeout(() => {
+            target.classList.add('in-view');
+          }, 300);
         }
       }),
     };
   },
   async mounted() {
-    setTimeout(() => {
-      this.IntersectionObserver.observe(this.$refs.h2 as Element);
-    }, 500);
+    this.IntersectionObserver.observe(this.$refs.h2 as Element);
   },
 });
 </script>

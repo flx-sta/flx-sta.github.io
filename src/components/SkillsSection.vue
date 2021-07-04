@@ -38,12 +38,12 @@ export default defineComponent({
       { title: t('databases.title'), data: databases },
       { title: t('testing.title'), data: testing },
       { title: t('cidcd.title'), data: cicd },
-      { title: t('languages.title'), data: languages, },
+      { title: t('languages.title'), data: languages },
     ]);
 
     return {
-      skills,
       t,
+      skills,
     };
   },
 });
