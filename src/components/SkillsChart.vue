@@ -28,17 +28,17 @@
     </h2>
     <canvas
       ref="canvas"
-      id="myChart"
       width="200"
-      :style="{ maxHeight }"
+      :style="{ height, maxHeight: height }"
     ></canvas>
   </div>
 </template>
 
 <script lang="ts">
 import { Chart, ChartConfiguration, ChartItem } from 'chart.js';
-import { defineComponent, Ref, ref, watch } from 'vue';
+import { computed, ComputedRef, defineComponent, Ref, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useIntersectionObserver } from '@/compositions';
 
 export default defineComponent({
   props: {
@@ -51,33 +51,24 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
-    const chart: Ref<Chart | null> = ref(null);
+  setup(props) {
     const { t } = useI18n({ inheritLocale: true });
-
-    return {
-      chart,
-      t,
-    };
-  },
-  computed: {
-    labels(): string[] {
-      return Object.keys(this.collection);
-    },
-    data(): number[] {
-      return Object.values(this.collection);
-    },
-    config(): ChartConfiguration {
-      const { data, labels } = this;
-
+    const chart: Ref<Chart | null> = ref(null);
+    const labels = computed(() => {
+      return Object.keys(props.collection);
+    });
+    const data = computed(() => {
+      return Object.values(props.collection);
+    });
+    const config: ComputedRef<ChartConfiguration> = computed(() => {
       return {
         type: 'bar',
         data: {
-          labels,
+          labels: labels.value,
           datasets: [
             {
               indexAxis: 'y',
-              data,
+              data: data.value,
               backgroundColor: ['#04785788', '#374151bb'],
             },
           ],
@@ -108,16 +99,35 @@ export default defineComponent({
           },
         },
       };
-    },
-    maxHeight() {
+    });
+
+    const drawCanvas = (canvas: HTMLCanvasElement) => {
+      const ctx = canvas.getContext('2d') as ChartItem;
+
+      chart.value = new Chart(ctx, config.value);
+    };
+
+    return {
+      ...props,
+      t,
+      chart,
+      data,
+      labels,
+      config,
+      ...useIntersectionObserver(({ target, isIntersecting }) => {
+        if (isIntersecting && !chart.value) {
+          drawCanvas(target as HTMLCanvasElement);
+        }
+      }),
+    };
+  },
+  computed: {
+    height(): string {
       return `${this.data.length * 45}px`;
     },
   },
   mounted() {
-    const canvas = this.$refs.canvas as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d') as ChartItem;
-
-    this.chart = new Chart(ctx, this.config);
+    this.IntersectionObserver.observe(this.$refs.canvas as HTMLCanvasElement);
   },
 });
 </script>
