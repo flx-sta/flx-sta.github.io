@@ -81,6 +81,23 @@ export default defineComponent({
           },
         ],
       },
+      {
+        title: 'portfolio',
+        img: 'https://raw.githubusercontent.com/Felix-Puetz/portfolio/main/src/assets/logo.svg',
+        description: t(`portfolio.description`),
+        links: [
+          {
+            title: 'GitHub',
+            url: 'https://github.com/Felix-Puetz/portfolio',
+            icon: ['fab', 'github'],
+          },
+          {
+            title: t('Website'),
+            url: 'https://www.felix-puetz.com/#',
+            icon: ['fas', 'link'],
+          },
+        ],
+      },
     ]);
 
     return {
@@ -96,18 +113,22 @@ en:
   title: Projects
   Website: Website
   raftmodding:
-    description: A website to share mods/tools for the Videogame <a class=" underline text-blue-600 hover:text-blue-800 visited:text-purple-600 " href="https://store.steampowered.com/app/648800/Raft/" target="_blank" >Raft</a>.
+    description: A website to share mods/tools for the Videogame Raft.
   peregrineCms:
     description: An api first, head optional cms with based on vuejs and apache sling.
   almostNoDurabilityMod:
-    description: A small <a class=" underline text-blue-600 hover:text-blue-800 visited:text-purple-600 " href="https://store.steampowered.com/app/648800/Raft/" target="_blank" >Raft</a> mod to increate item durability. Originally coded by me
+    description: A small Raft mod to increate item durability. Originally coded by me
+  portfolio:
+    description: The GitHub project for this website. Auto deployment via netlify.
 de:
   title: Projekte
   Website: Webseite
   raftmodding:
-    description: Eine Webseite um Mods/Tools für das Computerspiel <a class=" underline text-blue-600 hover:text-blue-800 visited:text-purple-600 " href="https://store.steampowered.com/app/648800/Raft/" target="_blank" >Raft</a> zu teilen.
+    description: Eine Webseite um Mods/Tools für das Computerspiel Raft zu teilen.
   peregrineCms:
     description: Eine API-first, head optional CMS das auf Vue.js und Apache-Sling basiert.
   almostNoDurabilityMod:
-    description: Ein kleiner <a class=" underline text-blue-600 hover:text-blue-800 visited:text-purple-600 " href="https://store.steampowered.com/app/648800/Raft/" target="_blank" >Raft</a> mod der die Haltbarkeit von Gegenständen verbessert. Orignal von mir entwickelt.
+    description: Ein kleiner Raft mod der die Haltbarkeit von Gegenständen verbessert. Orignal von mir entwickelt.
+  portfolio:
+    description: Das GitHub Projekt für diese Webseite. Auto deployment via netlify.
 </i18n>

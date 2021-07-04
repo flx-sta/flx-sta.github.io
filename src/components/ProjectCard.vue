@@ -15,7 +15,7 @@
     "
   >
     <div class="flex justify-center md:justify-end -mt-16">
-      <img class="w-20 h-20 object-cover rounded-full border-2" :src="img" />
+      <img class="w-20 h-20 object-cover rounded-full border-2 bg-white" :src="img" :alt="`${title}-logo`" />
     </div>
     <div>
       <h2 class="text-gray-800 text-3xl font-semibold">{{ title }}</h2>
