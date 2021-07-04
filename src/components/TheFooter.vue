@@ -14,7 +14,12 @@
   >
     <div>&copy; {{ fullYear }} Felix Pütz</div>
     <div>
-      <a href="mailto:fpuetz@gmx.net?subject=contact via felix-puetz.com">
+      <a
+        :href="`mailto:fpuetz@gmx.net?subject=${t(
+          'contact',
+        )} via felix-puetz.com`"
+        target="_blank"
+      >
         {{ t('contact') }}
       </a>
     </div>
@@ -39,9 +44,8 @@ export default defineComponent({
 </script>
 
 <i18n lang="yaml">
-  en:
-    contact: Contact
-  de:
-    contact: Kontakt
-  </i18n>
-  
+en:
+  contact: Contact
+de:
+  contact: Kontakt
+</i18n>

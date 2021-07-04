@@ -24,7 +24,7 @@
                 focus:ring-white
               "
             >
-              <span class="sr-only">Open main menu</span>
+              <span class="sr-only">{{ t('sr.mainMenu') }}</span>
               <fa-icon
                 icon="bars"
                 v-if="!open"
@@ -139,9 +139,9 @@ export default defineComponent({
     const open = ref(false);
     const { t, locale } = useI18n({ inheritLocale: true });
     const navigation = computed(() => [
-      { name: t('About Me'), url: '#about-me' },
-      { name: t('Skills'), url: '#skills' },
-      { name: t('Projects'), url: '#projects' },
+      { name: t('aboutMe.title'), url: '#about-me' },
+      { name: t('skills.title'), url: '#skills' },
+      { name: t('projects.title'), url: '#projects' },
     ]);
 
     return {
@@ -156,11 +156,21 @@ export default defineComponent({
 
 <i18n lang="yaml">
 en:
-  About Me: About Me
-  Skills: Skills
-  Projects: Projects
+  aboutMe:
+    title: About Me
+  skills:
+    title: Skills
+  projects:
+    title: Projects
+  sr:
+    mainMenu: Open menu
 de:
-  About Me: Über Mich
-  Skills: Kompetenzen
-  Projects: Projekte
+  aboutMe:
+    title: Über Mich
+  skills:
+    title: Kompetenzen
+  projects:
+    title: Projekte
+  sr:
+    mainMenu: Menü öffnen
 </i18n>

@@ -33,7 +33,7 @@ export default defineComponent({
       {
         title: 'RaftModding',
         img: 'https://www.raftmodding.com/images/raftmodding.png',
-        description: `A website to share mods/tools for the Videogame <a class=" underline text-blue-600 hover:text-blue-800 visited:text-purple-600 " href="https://store.steampowered.com/app/648800/Raft/" target="_blank" >Raft</a >`,
+        description: t(`raftmodding.description`),
         links: [
           {
             title: 'GitHub',
@@ -62,12 +62,12 @@ export default defineComponent({
             icon: ['fas', 'link'],
           },
         ],
-        description: `an api first, head optional cms with based on vuejs and apache sling`,
+        description: t(`peregrineCms.description`),
       },
       {
         title: 'almost-no-durability mod',
         img: 'https://raw.githubusercontent.com/Felix-Puetz/raft-mods/main/almost-no-durability/almost-no-durability/icon.png',
-        description: `A small <a class=" underline text-blue-600 hover:text-blue-800 visited:text-purple-600 " href="https://store.steampowered.com/app/648800/Raft/" target="_blank" >Raft</a> mod to increate item durability. Originally coded by me`,
+        description: t(`almostNoDurabilityMod.description`),
         links: [
           {
             title: 'GitHub',
@@ -92,11 +92,22 @@ export default defineComponent({
 </script>
 
 <i18n lang="yaml">
-  en:
-    title: Projects
-    Website: Website
-  de:
-    title: Projekte
-    Website: Webseite
-  </i18n>
-  
+en:
+  title: Projects
+  Website: Website
+  raftmodding:
+    description: A website to share mods/tools for the Videogame <a class=" underline text-blue-600 hover:text-blue-800 visited:text-purple-600 " href="https://store.steampowered.com/app/648800/Raft/" target="_blank" >Raft</a>.
+  peregrineCms:
+    description: An api first, head optional cms with based on vuejs and apache sling.
+  almostNoDurabilityMod:
+    description: A small <a class=" underline text-blue-600 hover:text-blue-800 visited:text-purple-600 " href="https://store.steampowered.com/app/648800/Raft/" target="_blank" >Raft</a> mod to increate item durability. Originally coded by me
+de:
+  title: Projekte
+  Website: Webseite
+  raftmodding:
+    description: Eine Webseite um Mods/Tools für das Computerspiel <a class=" underline text-blue-600 hover:text-blue-800 visited:text-purple-600 " href="https://store.steampowered.com/app/648800/Raft/" target="_blank" >Raft</a> zu teilen.
+  peregrineCms:
+    description: Eine API-first, head optional CMS das auf Vue.js und Apache-Sling basiert.
+  almostNoDurabilityMod:
+    description: Ein kleiner <a class=" underline text-blue-600 hover:text-blue-800 visited:text-purple-600 " href="https://store.steampowered.com/app/648800/Raft/" target="_blank" >Raft</a> mod der die Haltbarkeit von Gegenständen verbessert. Orignal von mir entwickelt.
+</i18n>
