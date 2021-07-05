@@ -5,7 +5,7 @@
       class="
         border-animation-left-right-left
         font-semibold
-        text-gray-700 text-5xl
+        text-gray-700 text-4xl lg:text-5xl
         my-5
         py-5
         text-center
@@ -20,6 +20,7 @@
 <script lang="ts">
 import { useIntersectionObserver } from '@/compositions';
 import { defineComponent } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
   props: {
@@ -29,7 +30,10 @@ export default defineComponent({
     },
   },
   setup() {
+    const { locale } = useI18n({ inheritLocale: true });
+
     return {
+      locale,
       ...useIntersectionObserver(({ target, isIntersecting }) => {
         if (isIntersecting) {
           setTimeout(() => {
@@ -38,6 +42,14 @@ export default defineComponent({
         }
       }),
     };
+  },
+  watch: {
+    locale() {
+      this.IntersectionObserver.unobserve(this.$refs.h2 as Element);
+      (this.$refs.h2 as Element).classList.remove('in-view');
+      this.IntersectionObserver.observe(this.$refs.h2 as Element);
+
+    },
   },
   async mounted() {
     this.IntersectionObserver.observe(this.$refs.h2 as Element);

@@ -16,7 +16,6 @@
 
 .border-animation-left-right-left::before {
   position: absolute;
-  transition: 0.5s;
   content: '';
   width: 0;
   bottom: 0;
@@ -27,7 +26,6 @@
 
 .border-animation-left-right-left::after {
   position: absolute;
-  transition: 0.5s;
   content: '';
   width: 0;
   left: 50%;
@@ -42,11 +40,13 @@
 }
 
 .border-animation-left-right-left.in-view::before {
+  transition: 0.5s;
   width: 100%;
   right: 0;
 }
 
 .border-animation-left-right-left.in-view::after {
+  transition: 0.5s;
   width: 100%;
   left: 0;
 }

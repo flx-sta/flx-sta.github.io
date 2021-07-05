@@ -1,13 +1,13 @@
 <template>
   <Disclosure
     as="nav"
-    class="bg-gray-700 fixed inset-x-0 top-0 z-20"
+    class="bg-gray-700 fixed inset-x-0 top-0 z-20 w-full"
     v-slot="{ open }"
   >
-    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="max-w-full w-full px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center h-16">
         <div class="inset-y-0 left-0 flex items-center sm:hidden">
-          <div class="w-14">
+          <div class="w-10">
             <!-- Mobile menu button-->
             <DisclosureButton
               class="
@@ -42,18 +42,17 @@
         </div>
         <div
           class="
-            flex-1 flex
+            flex
             items-center
             justify-between
-            sm:items-stretch sm:justify-start
             h-full
             w-full
           "
         >
-          <div class="flex-shrink-0 flex items-center">
+          <div class="flex items-center">
             <img class="block h-9 w-auto" src="@/assets/logo.svg" alt="Logo" />
           </div>
-          <h1 class="flex items-center ml-5 text-white text-3xl tracking-wider">
+          <h1 class="flex items-center ml-5 text-white text-xl lg:text-3xl tracking-wider">
             Felix Pütz
           </h1>
           <div class="hidden sm:block ml-auto">
@@ -76,7 +75,7 @@
             </div>
           </div>
           <div class="h-16 ml-5 flex items-center">
-            <LanguageDropDown />
+            <LocalesDropDown />
           </div>
         </div>
       </div>
@@ -117,7 +116,7 @@ import {
 } from '@headlessui/vue';
 import { computed, defineComponent, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import LanguageDropDown from './LanguageDropDown.vue';
+import LocalesDropDown from './LocalesDropDown.vue';
 
 interface NavigationItem {
   name: string;
@@ -133,7 +132,7 @@ export default defineComponent({
     MenuButton,
     MenuItem,
     MenuItems,
-    LanguageDropDown,
+    LocalesDropDown,
   },
   setup() {
     const open = ref(false);

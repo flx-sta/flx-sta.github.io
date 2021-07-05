@@ -22,13 +22,14 @@
         border-b-2 border-gray-300
         w-10/12
         text-center
+        break-all
       "
     >
       {{ title }}
     </h2>
     <canvas
       ref="canvas"
-      width="200"
+      width="1"
       :style="{ height, maxHeight: height }"
     ></canvas>
   </div>
