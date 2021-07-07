@@ -1,7 +1,7 @@
 <template>
   <Disclosure
     as="nav"
-    class="bg-gray-700 fixed inset-x-0 top-0 z-20 w-full"
+    class="bg-gray-700 dark:bg-gray-900 fixed inset-x-0 top-0 z-20 w-full shadow-lg"
     v-slot="{ open }"
   >
     <div class="max-w-full w-full px-2 sm:px-6 lg:px-8">
@@ -40,19 +40,20 @@
             </DisclosureButton>
           </div>
         </div>
-        <div
-          class="
-            flex
-            items-center
-            justify-between
-            h-full
-            w-full
-          "
-        >
+        <div class="flex items-center justify-between h-full w-full">
           <div class="flex items-center">
             <img class="block h-9 w-auto" src="@/assets/logo.svg" alt="Logo" />
           </div>
-          <h1 class="flex items-center ml-5 text-white text-xl lg:text-3xl tracking-wider">
+          <h1
+            class="
+              flex
+              items-center
+              ml-5
+              text-white text-xl
+              lg:text-3xl
+              tracking-wider
+            "
+          >
             Felix Pütz
           </h1>
           <div class="hidden sm:block ml-auto">
@@ -117,11 +118,6 @@ import {
 import { computed, defineComponent, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import LocalesDropDown from './LocalesDropDown.vue';
-
-interface NavigationItem {
-  name: string;
-  url: string;
-}
 
 export default defineComponent({
   components: {

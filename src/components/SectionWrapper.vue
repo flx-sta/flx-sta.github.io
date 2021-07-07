@@ -6,6 +6,7 @@
         border-animation-left-right-left
         font-semibold
         text-gray-700 text-4xl lg:text-5xl
+        dark:text-gray-300
         my-5
         py-5
         text-center
