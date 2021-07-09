@@ -12,6 +12,8 @@
       bg-gray-700
       dark:bg-gray-800
       text-white
+      duration-500
+      transition
     "
   >
     <div class="justify-self-start">&copy; {{ fullYear }} Felix Pütz</div>

@@ -1,5 +1,6 @@
 <template>
   <div
+    :key="theme"
     class="
       skills-chart
       flex flex-col
@@ -13,6 +14,7 @@
       duration-500
       dark:bg-gray-800
       hover:scale-105
+      transition
     "
   >
     <h2
@@ -26,6 +28,8 @@
         w-10/12
         text-center
         break-all
+        transition
+        duration-500
       "
     >
       {{ title }}
@@ -146,12 +150,9 @@ export default defineComponent({
   },
   watch: {
     theme() {
-      if (this.chart) {
-        this.chart.destroy();
-        this.$nextTick(() => {
-          this.drawChart(this.$refs.canvas as HTMLCanvasElement);
-        });
-      }
+      this.$nextTick(() => {
+        this.drawChart(this.$refs.canvas as HTMLCanvasElement);
+      });
     },
   },
   mounted() {

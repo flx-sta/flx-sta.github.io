@@ -17,10 +17,26 @@
     "
   >
     <div class="flex justify-center md:justify-end -mt-16">
-      <img class="w-20 h-20 object-cover rounded-full border-2 bg-white dark:bg-gray-800 dark:border-gray-600" :src="img" :alt="`${title}-logo`" />
+      <img
+        class="
+          w-20
+          h-20
+          object-cover
+          rounded-full
+          border-2
+          bg-white
+          dark:bg-gray-800 dark:border-gray-600
+          duration-500
+          transition
+        "
+        :src="img"
+        :alt="`${title}-logo`"
+      />
     </div>
     <div>
-      <h2 class="text-gray-800 dark:text-gray-200 text-3xl font-semibold">{{ title }}</h2>
+      <h2 class="text-gray-800 dark:text-gray-200 text-3xl font-semibold">
+        {{ title }}
+      </h2>
       <p class="mt-2 text-gray-600 dark:text-gray-300">
         <slot></slot>
       </p>
@@ -36,7 +52,13 @@
         <fa-icon
           :icon="link.icon"
           size="2x"
-          class="text-gray-700 dark:text-gray-300 hover:text-green-700 dark:hover:text-green-500 transition-colors"
+          class="
+            text-gray-700
+            dark:text-gray-300
+            hover:text-green-700
+            dark:hover:text-green-500
+            transition-colors
+          "
         />
       </a>
     </div>

@@ -1,7 +1,17 @@
 <template>
   <SectionWrapper :title="t('title')">
     <div
-      class="max-w-4xl flex items-center h-auto flex-wrap mx-auto mt-32 lg:my-0 dark:text-gray-300"
+      class="
+        max-w-4xl
+        flex
+        items-center
+        h-auto
+        flex-wrap
+        mx-auto
+        mt-32
+        lg:my-0
+        dark:text-gray-300
+      "
     >
       <!--Main Col-->
       <div
@@ -16,6 +26,8 @@
           mx-6
           lg:mx-0
           dark:bg-gray-800
+          transition
+          duration-500
         "
       >
         <div class="p-4 md:p-12 text-center lg:text-left">
@@ -60,7 +72,18 @@
               lg:justify-start
             "
           >
-            <fa-icon icon="briefcase" class="h-5 w-5 mr-4 text-green-700 dark:text-green-500" />
+            <fa-icon
+              icon="briefcase"
+              class="
+                h-5
+                w-5
+                mr-4
+                text-green-700
+                dark:text-green-500
+                transition
+                duration-500
+              "
+            />
             {{ t('jobTitle') }}
           </p>
           <p
@@ -75,7 +98,18 @@
               lg:justify-start
             "
           >
-            <fa-icon icon="map-marker-alt" class="h5 w-5 mr-4 text-green-700 dark:text-green-500" />
+            <fa-icon
+              icon="map-marker-alt"
+              class="
+                h5
+                w-5
+                mr-4
+                text-green-700
+                dark:text-green-500
+                transition
+                duration-500
+              "
+            />
             {{ t('city') }}, {{ t('country') }}
           </p>
           <p class="py-8 text-sm">
@@ -106,7 +140,12 @@
               <fa-icon
                 :icon="contactLink.icon"
                 size="2x"
-                class="text-gray-700 hover:text-green-700 dark:text-gray-300 dark:hover:text-green-500 transition-colors"
+                class="
+                  text-gray-700
+                  hover:text-green-700
+                  dark:text-gray-300 dark:hover:text-green-500
+                  transition-colors
+                "
               />
             </a>
           </div>

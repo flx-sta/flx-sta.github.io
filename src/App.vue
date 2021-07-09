@@ -1,6 +1,6 @@
 <template>
   <div class="app-theme-inidicator-wrapper" :class="theme">
-    <div class="app-content-wrapper dark:bg-gray-700">
+    <div class="app-content-wrapper dark:bg-gray-700 transition duration-500">
       <TheNavigation />
       <main>
         <div class="w-full mx-auto mt-12">

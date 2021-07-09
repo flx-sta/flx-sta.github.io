@@ -1,7 +1,7 @@
 <template>
   <Disclosure
     as="nav"
-    class="bg-gray-700 dark:bg-gray-900 fixed inset-x-0 top-0 z-20 w-full shadow-lg"
+    class="bg-gray-700 dark:bg-gray-900 fixed inset-x-0 top-0 z-20 w-full shadow-lg transition duration-500"
     v-slot="{ open }"
   >
     <div class="max-w-full w-full px-2 sm:px-6 lg:px-8">
