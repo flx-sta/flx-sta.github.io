@@ -41,7 +41,10 @@
         <slot></slot>
       </p>
     </div>
-    <div class="flex justify-around items-stretch mt-10 w-full">
+    <div class="tags my-5">
+      <AppTag v-for="tag in tags" v-bind="tag" />
+    </div>
+    <div class="flex justify-around items-stretch w-full">
       <a
         v-for="link in links"
         class="link"
@@ -67,6 +70,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import AppTag from './AppTag.vue';
 
 interface ProjectLink {
   url: string;
@@ -76,10 +80,14 @@ interface ProjectLink {
 
 interface ProjectTag {
   title: string;
-  icon: string | string[];
+  icon?: string | string[];
+  img?: string;
 }
 
 export default defineComponent({
+  components: {
+    AppTag,
+  },
   props: {
     img: {
       type: String,
