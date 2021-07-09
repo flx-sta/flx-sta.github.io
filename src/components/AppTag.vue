@@ -6,13 +6,17 @@
       inline-block
       py-1
       px-2
-      uppercase
       rounded
-      text-gray-700
-      bg-green-700
+      border
+      text-gray-800
+      border-gray-600
+      bg-gray-100
+      dark:text-white dark:bg-gray-700 dark:border-gray-500
       uppercase
       last:mr-0
-      mr-1
+      mr-2
+      transition
+      duration-500
     "
   >
     <fa-icon v-if="icon" :icon="icon" /> {{ title }}

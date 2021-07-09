@@ -3,12 +3,7 @@
     <div
       class="project-card-wrapper grid lg:grid-cols-2 grid-cols-1 gap-5 mt-10"
     >
-      <ProjectCard
-        v-for="project in projects"
-        :img="project.img"
-        :title="project.title"
-        :links="project.links"
-      >
+      <ProjectCard v-for="project in projects" v-bind="project">
         <div v-html="project.description"></div>
       </ProjectCard>
     </div>
@@ -34,6 +29,12 @@ export default defineComponent({
         title: 'RaftModding',
         img: 'https://www.raftmodding.com/images/raftmodding.png',
         description: t(`raftmodding.description`),
+        tags: [
+          { title: 'vue3', icon: ['fab', 'vuejs'] },
+          { title: 'ts' },
+          { title: 'scss', icon: ['fab', 'sass'] },
+          { title: 'nodejs', icon: ['fab', 'node-js'] },
+        ],
         links: [
           {
             title: 'GitHub',
@@ -50,6 +51,12 @@ export default defineComponent({
       {
         title: 'peregrine-cms',
         img: 'https://www.peregrine-cms.com/content/peregrine_cms/assets/media/peregrine_logo.svg',
+        tags: [
+          { title: 'vue2', icon: ['fab', 'vuejs'] },
+          { title: 'js', icon: ['fab', 'js'] },
+          { title: 'scss', icon: ['fab', 'sass'] },
+          { title: 'java', icon: ['fab', 'java'] },
+        ],
         links: [
           {
             title: 'GitHub',
@@ -68,6 +75,7 @@ export default defineComponent({
         title: 'almost-no-durability mod',
         img: 'https://raw.githubusercontent.com/Felix-Puetz/raft-mods/main/almost-no-durability/almost-no-durability/icon.png',
         description: t(`almostNoDurabilityMod.description`),
+        tags: [{ title: 'C#', icon: ['fab'] }],
         links: [
           {
             title: 'GitHub',
@@ -85,6 +93,11 @@ export default defineComponent({
         title: 'portfolio',
         img: 'https://raw.githubusercontent.com/Felix-Puetz/portfolio/main/src/assets/logo.svg',
         description: t(`portfolio.description`),
+        tags: [
+          { title: 'vue3', icon: ['fab', 'vuejs'] },
+          { title: 'ts' },
+          { title: 'tailwind' },
+        ],
         links: [
           {
             title: 'GitHub',
