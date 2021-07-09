@@ -75,7 +75,7 @@ export default defineComponent({
         title: 'almost-no-durability mod',
         img: 'https://raw.githubusercontent.com/Felix-Puetz/raft-mods/main/almost-no-durability/almost-no-durability/icon.png',
         description: t(`almostNoDurabilityMod.description`),
-        tags: [{ title: 'C#', icon: ['fab'] }],
+        tags: [{ title: 'C#'}],
         links: [
           {
             title: 'GitHub',
