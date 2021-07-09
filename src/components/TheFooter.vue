@@ -4,16 +4,24 @@
     class="
       footer
       w-full
-      flex
+      grid grid-cols-2
       items-center
-      justify-between
-      p-3
+      lg:px-7
+      px-3
+      py-5
       bg-gray-700
+      dark:bg-gray-800
       text-white
+      duration-500
+      transition
     "
   >
-    <div>&copy; {{ fullYear }} Felix Pütz</div>
-    <div>
+    <div class="justify-self-start">&copy; {{ fullYear }} Felix Pütz</div>
+    <div class="group justify-self-end">
+      <fa-icon
+        icon="envelope"
+        class="mr-1 opacity-0 group-hover:opacity-100 transition"
+      ></fa-icon>
       <a
         :href="`mailto:fpuetz@gmx.net?subject=${t(
           'contact',
@@ -39,7 +47,6 @@ export default defineComponent({
       fullYear: new Date().getFullYear(),
     };
   },
-  components: {},
 });
 </script>
 
