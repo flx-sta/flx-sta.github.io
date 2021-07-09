@@ -1,22 +1,29 @@
 <template>
-  <TheNavigation />
-  <main>
-    <div class="w-full mx-auto mt-12">
-      <AboutMeSection id="about-me" />
-      <SkillsSection id="skills" class="mt-12" />
-      <ProjectsSection id="projects" class="mt-12" />
+  <div class="app-theme-inidicator-wrapper" :class="theme">
+    <div class="app-content-wrapper dark:bg-gray-700 transition duration-500">
+      <TheNavigation />
+      <main>
+        <div class="w-full mx-auto mt-12">
+          <AboutMeSection id="about-me" />
+          <SkillsSection id="skills" class="mt-12" />
+          <ProjectsSection id="projects" class="mt-12" />
+        </div>
+      </main>
+      <TheThemeSwitch />
+      <TheFooter />
     </div>
-  </main>
-  <TheFooter />
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import TheNavigation from './components/TheNavigation.vue';
 import AboutMeSection from './components/AboutMeSection.vue';
 import SkillsSection from './components/SkillsSection.vue';
 import ProjectsSection from './components/ProjectsSection.vue';
 import TheFooter from './components/TheFooter.vue';
+import { state } from './state';
+import TheThemeSwitch from './components/TheThemeSwitch.vue';
 
 export default defineComponent({
   name: 'App',
@@ -26,6 +33,13 @@ export default defineComponent({
     SkillsSection,
     ProjectsSection,
     TheFooter,
+    TheThemeSwitch,
+  },
+  setup() {
+    const theme = computed(() => state.theme);
+    return {
+      theme,
+    };
   },
 });
 </script>
@@ -35,9 +49,5 @@ export default defineComponent({
 
 html {
   scroll-behavior: smooth;
-}
-
-.section-wrapper::nth-child(even) {
-  background-color: 'blue' !important;
 }
 </style>
