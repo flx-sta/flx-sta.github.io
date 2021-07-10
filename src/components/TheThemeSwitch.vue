@@ -1,30 +1,29 @@
 <template>
   <div
-    class="the-theme-switch fixed flex inset-x-0 bottom-0 pointer-events-none"
+    class="the-theme-switch sticky flex right-0 bottom-0 pointer-events-none"
   >
     <button
       class="
         m-2
         rounded-full
-        w-12
-        h-12
-        mx-auto
-        bg-green-600
+        w-10
+        h-10
+        lg:w-14 lg:h-14
+        ml-auto
+        bg-green-700
         hover:bg-green-700
-        ring-2
-        ring-green-700
         text-white
-        shadow-lg
+        shadow
         transition
         transform
         duration-500
         hover:scale-110
         pointer-events-auto
-        bg-opacity-90
+        outline-none
       "
       @click="toggleTheme"
     >
-      <fa-icon :icon="icon" />
+      <fa-icon :icon="icon" class="lg:text-2xl text-md" />
     </button>
   </div>
 </template>

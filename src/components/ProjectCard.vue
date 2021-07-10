@@ -41,7 +41,7 @@
         <slot></slot>
       </p>
     </div>
-    <div class="tags my-5">
+    <div class="tags mb-5 mt-5">
       <AppTag v-for="tag in tags" v-bind="tag" />
     </div>
     <div class="flex justify-around items-stretch w-full">

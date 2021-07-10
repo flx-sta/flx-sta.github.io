@@ -14,7 +14,8 @@
       dark:text-white dark:bg-gray-700 dark:border-gray-500
       uppercase
       last:mr-0
-      mr-2
+      mr-1
+      mt-1
       transition
       duration-500
     "
