@@ -75,7 +75,7 @@ export default defineComponent({
         title: 'almost-no-durability mod',
         img: 'https://raw.githubusercontent.com/Felix-Puetz/raft-mods/main/almost-no-durability/almost-no-durability/icon.png',
         description: t(`almostNoDurabilityMod.description`),
-        tags: [{ title: 'C#'}],
+        tags: [{ title: 'C#' }],
         links: [
           {
             title: 'GitHub',
@@ -111,6 +111,24 @@ export default defineComponent({
           },
         ],
       },
+      {
+        title: 'FlashpointProject/launcher',
+        img: 'https://bluemaxima.org/flashpoint/images/logo.svg',
+        description: t(`flashpointProject.launcher.description`),
+        tags: [{ title: 'ts' }, { title: 'css', icon: ['fab', 'css3'] }],
+        links: [
+          {
+            title: 'GitHub',
+            url: 'https://github.com/FlashpointProject/launcher',
+            icon: ['fab', 'github'],
+          },
+          {
+            title: t('Website'),
+            url: 'http://bluemaxima.org/flashpoint/',
+            icon: ['fas', 'link'],
+          },
+        ],
+      },
     ]);
 
     return {
@@ -133,6 +151,9 @@ en:
     description: A small Raft mod to increate item durability. Originally coded by me
   portfolio:
     description: The GitHub project for this website. Auto deployment via netlify.
+  flashpointProject:
+    launcher:
+      description: The Flashpoint Launcher (FPL) is a desktop application made for browsing, storing and launching other applications (games, animations, web apps etc.). It is specifically made for BlueMaxima's Flashpoint, which is a web preservation project.
 de:
   title: Projekte
   Website: Webseite
@@ -144,4 +165,7 @@ de:
     description: Ein kleiner Raft mod der die Haltbarkeit von Gegenständen verbessert. Orignal von mir entwickelt.
   portfolio:
     description: Das GitHub Projekt für diese Webseite. Auto deployment via netlify.
+  flashpointProject:
+    launcher:
+      description: Der Flashpoint Launcher (FPL) ist eine Desktop Applikation zum durchsuchen, speichern und starten anderer Applikationen (Games, Animationen, Webapps etc.). Es wurde speziell für BlueMaxima's Flashpoint gemacht, welches ein "web preservation" Projekt ist.
 </i18n>
