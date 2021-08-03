@@ -234,7 +234,7 @@ de:
   country: Deutschland
   description: >
     Als erfahrener Entwickler suche ich immer nach neuen Herausforderungen.
-    Ich liebe es neue Technologien auszuprobieren oder ein tiefern Einblick 
+    Ich liebe es neue Technologien auszuprobieren oder ein tieferen Einblick 
     in mir bekannte Technologien zu werfen.
     Mein Fokus liegt auf Javascript/Typescript und die 
     Haupttools Node.js, Vue.js, Electron etc.
