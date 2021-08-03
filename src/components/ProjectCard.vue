@@ -34,7 +34,7 @@
       />
     </div>
     <div>
-      <h2 class="text-gray-800 dark:text-gray-200 text-3xl font-semibold">
+      <h2 class="text-gray-800 dark:text-gray-200 text-3xl font-semibold break-words">
         {{ title }}
       </h2>
       <p class="mt-2 text-gray-600 dark:text-gray-300">
