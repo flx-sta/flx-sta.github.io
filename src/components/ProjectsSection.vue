@@ -129,6 +129,28 @@ export default defineComponent({
           },
         ],
       },
+      {
+        title: 'simple-covid-dashboard',
+        img: 'https://raw.githubusercontent.com/Felix-Puetz/simple-covid-dashboard/main/public/favicon.ico',
+        description: t(`simpleCovidDashboard.description`),
+        tags: [
+          { title: 'react', icon: ['fab', 'react'] },
+          { title: 'ts' },
+          { title: 'css', icon: ['fab', 'css3'] },
+        ],
+        links: [
+          {
+            title: 'GitHub',
+            url: 'https://github.com/Felix-Puetz/simple-covid-dashboard',
+            icon: ['fab', 'github'],
+          },
+          {
+            title: t('Website'),
+            url: 'https://covid19.felix-puetz.com/',
+            icon: ['fas', 'link'],
+          },
+        ],
+      },
     ]);
 
     return {
@@ -154,6 +176,8 @@ en:
   flashpointProject:
     launcher:
       description: The Flashpoint Launcher (FPL) is a desktop application made for browsing, storing and launching other applications (games, animations, web apps etc.). It is specifically made for BlueMaxima's Flashpoint, which is a web preservation project.
+  simpleCovidDashboard:
+    description: A simple dashboard that grabs the current worldwide covid19 numbers and displays them. Additionally you can load the numbers of freely choosable country via an input at the top.
 de:
   title: Projekte
   Website: Webseite
@@ -168,4 +192,6 @@ de:
   flashpointProject:
     launcher:
       description: Der Flashpoint Launcher (FPL) ist eine Desktop Applikation zum durchsuchen, speichern und starten anderer Applikationen (Games, Animationen, Webapps etc.). Es wurde speziell für BlueMaxima's Flashpoint gemacht, welches ein "web preservation" Projekt ist.
+  simpleCovidDashboard:
+    description: Ein simples Dashboard das die aktuellen weltweiten COVID19 Zahlen ausgibt. Über ein Eingabefeld kann außerdem ein Land ausgewählt werden um die Daten dieses Landes zu erhalten.
 </i18n>
