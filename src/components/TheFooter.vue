@@ -37,7 +37,7 @@ export default defineComponent({
   setup() {
     const { t } = useI18n({ inheritLocale: true });
     const mail = {
-      to: 'contact@felix-puetz.com',
+      to: 'info@felix-puetz.com',
       subject: `${t('contact')} via felix-puetz.com`,
     };
 
