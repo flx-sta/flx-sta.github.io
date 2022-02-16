@@ -192,7 +192,7 @@ const contactLinks = [
   },
   {
     title: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/felix-p%C3%BCtz-28188719a/',
+    url: 'https://www.linkedin.com/in/felix-p-28188719a/',
     icon: ['fab', 'linkedin'],
     hoverColor: '#2867B2',
   },
