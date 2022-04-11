@@ -32,14 +32,12 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useMail } from '../compositions';
 
 export default defineComponent({
   setup() {
     const { t } = useI18n({ inheritLocale: true });
-    const mail = {
-      to: 'info@felix-puetz.com',
-      subject: `${t('contact')} via felix-puetz.com`,
-    };
+    const { mail } = useMail();
 
     return {
       t,

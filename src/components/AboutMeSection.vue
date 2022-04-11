@@ -169,34 +169,11 @@
 
 <script lang="ts">
 import profilePicture from '@/assets/profile-picture.jpg';
+import { useMail } from '@/compositions';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
 import { defineComponent } from 'vue';
-import SectionWrapper from './SectionWrapper.vue';
 import { useI18n } from 'vue-i18n';
-
-const contactLinks = [
-  {
-    title: 'GitHub',
-    url: 'https://github.com/Felix-Puetz',
-    icon: ['fab', 'github'],
-  },
-  {
-    title: 'E-Mail',
-    url: 'mailto:FPuetz@gmx.net?subject=Contact via felix-puetz.com',
-    icon: 'envelope',
-  },
-  {
-    title: 'Xing',
-    url: 'https://www.xing.com/profile/Felix_Puetz4/cv',
-    icon: ['fab', 'xing'],
-  },
-  {
-    title: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/felix-p-28188719a/',
-    icon: ['fab', 'linkedin'],
-    hoverColor: '#2867B2',
-  },
-];
+import SectionWrapper from './SectionWrapper.vue';
 
 export default defineComponent({
   components: {
@@ -207,6 +184,32 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n({ inheritLocale: true });
+    const { mail } = useMail();
+
+    const contactLinks = [
+      {
+        title: 'E-Mail',
+        url: `mailto:${mail.to}?subject=${mail.subject}`,
+        icon: 'envelope',
+      },
+      {
+        title: 'GitHub',
+        url: 'https://github.com/Felix-Staud',
+        icon: ['fab', 'github'],
+      },
+      {
+        title: 'Xing',
+        url: 'https://www.xing.com/profile/Felix_Staud/cv',
+        icon: ['fab', 'xing'],
+      },
+      {
+        title: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/felix-s-28188719a/',
+        icon: ['fab', 'linkedin'],
+        hoverColor: '#2867B2',
+      },
+    ];
+
     return {
       profilePicture,
       contactLinks,

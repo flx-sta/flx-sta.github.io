@@ -3,7 +3,7 @@
     <div
       class="project-card-wrapper grid lg:grid-cols-2 grid-cols-1 gap-5 mt-10"
     >
-      <ProjectCard v-for="project in projects" v-bind="project">
+      <ProjectCard v-for="project in projects" v-bind="project" :key="project.title">
         <div v-html="project.description"></div>
       </ProjectCard>
     </div>
@@ -73,13 +73,13 @@ export default defineComponent({
       },
       {
         title: 'almost-no-durability mod',
-        img: 'https://raw.githubusercontent.com/Felix-Puetz/raft-mods/main/almost-no-durability/almost-no-durability/icon.png',
+        img: 'https://raw.githubusercontent.com/Felix-Staud/raft-mods/main/almost-no-durability/almost-no-durability/icon.png',
         description: t(`almostNoDurabilityMod.description`),
         tags: [{ title: 'C#' }],
         links: [
           {
             title: 'GitHub',
-            url: 'https://github.com/Felix-Puetz/raft-mods/tree/main/almost-no-durability',
+            url: 'https://github.com/Felix-Staud/raft-mods/tree/main/almost-no-durability',
             icon: ['fab', 'github'],
           },
           {
@@ -91,7 +91,7 @@ export default defineComponent({
       },
       {
         title: 'portfolio',
-        img: 'https://raw.githubusercontent.com/Felix-Puetz/portfolio/main/src/assets/logo.svg',
+        img: 'https://raw.githubusercontent.com/Felix-Staud/portfolio/main/src/assets/logo.svg',
         description: t(`portfolio.description`),
         tags: [
           { title: 'vue3', icon: ['fab', 'vuejs'] },
@@ -101,12 +101,12 @@ export default defineComponent({
         links: [
           {
             title: 'GitHub',
-            url: 'https://github.com/Felix-Puetz/portfolio',
+            url: 'https://github.com/Felix-Staud/portfolio',
             icon: ['fab', 'github'],
           },
           {
             title: t('Website'),
-            url: 'https://www.felix-puetz.com/#',
+            url: 'https://www.felix-staud.com/#',
             icon: ['fas', 'link'],
           },
         ],
@@ -131,7 +131,7 @@ export default defineComponent({
       },
       {
         title: 'simple-covid-dashboard',
-        img: 'https://raw.githubusercontent.com/Felix-Puetz/simple-covid-dashboard/main/public/favicon.ico',
+        img: 'https://raw.githubusercontent.com/Felix-Staud/simple-covid-dashboard/main/public/favicon.ico',
         description: t(`simpleCovidDashboard.description`),
         tags: [
           { title: 'react', icon: ['fab', 'react'] },
@@ -141,12 +141,12 @@ export default defineComponent({
         links: [
           {
             title: 'GitHub',
-            url: 'https://github.com/Felix-Puetz/simple-covid-dashboard',
+            url: 'https://github.com/Felix-Staud/simple-covid-dashboard',
             icon: ['fab', 'github'],
           },
           {
             title: t('Website'),
-            url: 'https://covid19.felix-puetz.com/',
+            url: 'https://covid19.felix-staud.com/',
             icon: ['fas', 'link'],
           },
         ],
