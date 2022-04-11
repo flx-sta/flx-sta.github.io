@@ -16,7 +16,7 @@
       transition
     "
   >
-    <div class="justify-self-start">&copy; {{ fullYear }} Felix Pütz</div>
+    <div class="justify-self-start">&copy; {{ fullYear }} Felix Staud</div>
     <div class="group justify-self-end">
       <fa-icon
         icon="envelope"

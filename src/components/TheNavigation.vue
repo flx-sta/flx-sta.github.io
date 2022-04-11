@@ -54,7 +54,7 @@
               tracking-wider
             "
           >
-            Felix Pütz
+            Felix Staud
           </h1>
           <div class="hidden sm:block ml-auto">
             <div class="flex space-x-4 h-full items-center">

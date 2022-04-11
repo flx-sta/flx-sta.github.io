@@ -50,7 +50,7 @@
             }"
           ></div>
 
-          <h1 class="text-3xl font-bold pt-8 lg:pt-0">Felix Pütz</h1>
+          <h1 class="text-3xl font-bold pt-8 lg:pt-0">Felix Staud</h1>
           <div
             class="
               mx-auto
