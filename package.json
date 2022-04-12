@@ -1,5 +1,7 @@
 {
-  "version": "0.0.0",
+  "version": "1.2.0",
+  "description": "Portfolio of Felix Staud",
+  "author": "Felix Staud <felix.staud@gmail.com> (https://felix-staud.com)",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
