@@ -64,7 +64,7 @@ const tools = {
   jest: 75,
   'socket.io': 60,
   angular: 40,
-  svelte: 30,
+  svelte: 50,
 };
 
 const communication = {
