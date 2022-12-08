@@ -1,0 +1,6 @@
+jobs:
+  deploy-job:
+    steps:
+      - name: Run deploy.sh script
+        run: ./.github/scripts/deploy.sh
+        shell: bash
