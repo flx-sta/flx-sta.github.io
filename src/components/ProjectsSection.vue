@@ -106,7 +106,7 @@ export default defineComponent({
           },
           {
             title: t('Website'),
-            url: 'https://www.felix-staud.com/#',
+            url: 'https://felix-staud.github.io/',
             icon: ['fas', 'link'],
           },
         ],
@@ -143,11 +143,6 @@ export default defineComponent({
             title: 'GitHub',
             url: 'https://github.com/Felix-Staud/simple-covid-dashboard',
             icon: ['fab', 'github'],
-          },
-          {
-            title: t('Website'),
-            url: 'https://covid19.felix-staud.com/',
-            icon: ['fas', 'link'],
           },
         ],
       },
