@@ -59,8 +59,8 @@ const programmingLanguages = {
 const tools = {
   'Node.js': 100,
   'Vue.js': 100,
-  'codecept.js': 95,
-  react: 75,
+  react: 100,
+  'codecept.js': 80,
   jest: 75,
   'socket.io': 60,
   angular: 40,
