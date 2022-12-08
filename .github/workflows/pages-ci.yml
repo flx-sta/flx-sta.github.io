@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run deploy.sh script
-        run: ./.github/scripts/deploy.sh
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: ./.github/scripts/deploy.sh
         shell: bash
