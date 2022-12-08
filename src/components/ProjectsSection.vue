@@ -172,7 +172,7 @@ en:
   almostNoDurabilityMod:
     description: A small Raft mod to increate item durability. Originally coded by me
   portfolio:
-    description: The GitHub project for this website. Auto deployment via netlify.
+    description: The GitHub project for this website. Auto deployment via github-actions.
   flashpointProject:
     launcher:
       description: The Flashpoint Launcher (FPL) is a desktop application made for browsing, storing and launching other applications (games, animations, web apps etc.). It is specifically made for BlueMaxima's Flashpoint, which is a web preservation project.
@@ -188,7 +188,7 @@ de:
   almostNoDurabilityMod:
     description: Ein kleiner Raft mod der die Haltbarkeit von Gegenständen verbessert. Orignal von mir entwickelt.
   portfolio:
-    description: Das GitHub Projekt für diese Webseite. Auto deployment via netlify.
+    description: Das GitHub Projekt für diese Webseite. Automatisches deployment via github-actions.
   flashpointProject:
     launcher:
       description: Der Flashpoint Launcher (FPL) ist eine Desktop Applikation zum durchsuchen, speichern und starten anderer Applikationen (Games, Animationen, Webapps etc.). Es wurde speziell für BlueMaxima's Flashpoint gemacht, welches ein "web preservation" Projekt ist.
