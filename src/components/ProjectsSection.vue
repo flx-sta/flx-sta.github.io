@@ -144,6 +144,11 @@ export default defineComponent({
             url: 'https://github.com/Felix-Staud/simple-covid-dashboard',
             icon: ['fab', 'github'],
           },
+          {
+            title: t('Website'),
+            url: 'https://felix-staud.github.io/simple-covid-dashboard/',
+            icon: ['fas', 'link'],
+          }
         ],
       },
     ]);
