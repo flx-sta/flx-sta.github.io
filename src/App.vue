@@ -2,7 +2,7 @@
   <div class="app-theme-inidicator-wrapper" :class="theme">
     <div class="app-content-wrapper dark:bg-gray-700 transition duration-500">
       <TheNavigation />
-      <main>
+      <main class="max-w-7xl m-auto">
         <div class="w-full mx-auto mt-12">
           <AboutMeSection id="about-me" />
           <SkillsSection id="skills" class="mt-12" />

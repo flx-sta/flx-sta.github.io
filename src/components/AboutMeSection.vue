@@ -198,11 +198,6 @@ export default defineComponent({
         icon: ['fab', 'github'],
       },
       {
-        title: 'Xing',
-        url: 'https://www.xing.com/profile/Felix_Staud/cv',
-        icon: ['fab', 'xing'],
-      },
-      {
         title: 'LinkedIn',
         url: 'https://www.linkedin.com/in/felix-s-28188719a/',
         icon: ['fab', 'linkedin'],
