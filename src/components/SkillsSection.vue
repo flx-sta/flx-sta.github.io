@@ -1,11 +1,11 @@
 <template>
   <SectionWrapper :title="t('title')">
     <div class="skills-charts-wrapper grid lg:grid-cols-2 grid-cols-1 gap-6">
-      <SkillsChart
-        v-for="(skill, key) in skills"
-        :key="`skill-chart-${skill.title}`"
-        :title="skill.title"
-        :collection="skill.data"
+      <SkillsCollection
+          v-for="(skill) in skills"
+          :key="`skill-collection-${skill.title}`"
+          :title="skill.title"
+          :items="skill.data"
       />
     </div>
   </SectionWrapper>
@@ -19,26 +19,59 @@ import {
   Chart,
   LinearScale,
 } from 'chart.js';
-import { defineComponent, computed } from 'vue';
+import {defineComponent, computed} from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
-import SkillsChart from './SkillsChart.vue';
-import { useI18n } from 'vue-i18n';
+import {useI18n} from 'vue-i18n';
+import SkillsCollection, {SkillItem} from "@/components/SkillsCollection.vue";
+import javaLogo from '@/assets/img/logo/java-logo.png';
+import javascriptLogo from '@/assets/img/logo/javascript-logo.png';
+import phpLogo from '@/assets/img/logo/php-logo.png';
+import pythonLogo from '@/assets/img/logo/python-logo.png';
+import typescriptLogo from '@/assets/img/logo/typescript-logo.png';
+import angularLogo from '@/assets/img/logo/angular-logo.png';
+import jestLogo from '@/assets/img/logo/jest-logo.jpg';
+import nodejsLogo from '@/assets/img/logo/nodejs-logo.png';
+import reactLogo from '@/assets/img/logo/react-logo.png';
+import socketIoLogo from '@/assets/img/logo/socketio-logo.svg';
+import svelteLogo from '@/assets/img/logo/svelte-logo.png';
+import vueJsLogo from '@/assets/img/logo/vuejs-logo.png';
+import restLogo from '@/assets/img/logo/rest-logo.png';
+import webSocketLogo from '@/assets/img/logo/websocket-logo.png';
+import dynamoDbLogo from '@/assets/img/logo/dynamodb-logo.png';
+import end2endTestingLogo from '@/assets/img/logo/end2endtesting-logo.png';
+import firebaseLogo from '@/assets/img/logo/firebase-logo.png';
+import integrationTestingLogo from '@/assets/img/logo/ingrationtesting-logo.png';
+import mysqlLogo from '@/assets/img/logo/mysql-logo.svg';
+import nosqlLogo from '@/assets/img/logo/nosql-logo.png';
+import postgresqlLogo from '@/assets/img/logo/postgresql-logo.png';
+import unitTestingLogo from '@/assets/img/logo/unittesting-logo.png';
+import germanyLogo from '@/assets/img/logo/germany-logo.png';
+import usaLogo from '@/assets/img/logo/usa-logo.png';
+import travisLogo from '@/assets/img/logo/travis-logo.jpg';
+import gitlabLogo from '@/assets/img/logo/gitlab-logo.png';
+import githubLogo from '@/assets/img/logo/github-logo.svg';
+import jenkinsLogo from '@/assets/img/logo/jenkins-logo.png';
+
+interface Skill {
+  title: string,
+  data: SkillItem[]
+}
 
 Chart.register(BarElement, CategoryScale, BarController, LinearScale);
 
 export default defineComponent({
-  components: { SectionWrapper, SkillsChart },
+  components: {SkillsCollection, SectionWrapper, SkillsCollection},
   setup() {
-    const { t } = useI18n({ inheritLocale: true });
+    const {t} = useI18n({inheritLocale: true});
 
-    const skills = computed(() => [
-      { title: t('programmingLanguages.title'), data: programmingLanguages },
-      { title: t('tools.title'), data: tools },
-      { title: t('communication.title'), data: communication },
-      { title: t('databases.title'), data: databases },
-      { title: t('testing.title'), data: testing },
-      { title: t('cidcd.title'), data: cicd },
-      { title: t('languages.title'), data: languages },
+    const skills = computed<Skill[]>(() => [
+      {title: t('programmingLanguages.title'), data: programmingSkills},
+      {title: t('tools.title'), data: tools},
+      {title: t('communication.title'), data: communication},
+      {title: t('databases.title'), data: databases},
+      {title: t('testing.title'), data: testing},
+      {title: t('cidcd.title'), data: ciCd},
+      {title: t('languages.title'), data: languages},
     ]);
 
     return {
@@ -48,56 +81,54 @@ export default defineComponent({
   },
 });
 
-const programmingLanguages = {
-  javascript: 100,
-  typescript: 98,
-  php: 60,
-  java: 60,
-  python: 55,
-};
+const programmingSkills: SkillItem[] = [
+  {name: 'JavaScript', img: javascriptLogo,},
+  {name: 'TypeScript', img: typescriptLogo,},
+  {name: 'PHP', img: phpLogo,},
+  {name: 'Java', img: javaLogo,},
+  {name: 'Python', img: pythonLogo,},
+];
 
-const tools = {
-  'Node.js': 100,
-  'Vue.js': 100,
-  react: 100,
-  'codecept.js': 80,
-  jest: 75,
-  'socket.io': 60,
-  angular: 40,
-  svelte: 50,
-};
+const tools: SkillItem[] = [
+  {name: 'Node.js', img: nodejsLogo},
+  {name: 'Vue.js', img: vueJsLogo},
+  {name: 'react', img: reactLogo},
+  {name: 'jest', img: jestLogo},
+  {name: 'angular', img: angularLogo},
+  {name: 'svelte', img: svelteLogo},
+];
 
-const communication = {
-  REST: 100,
-  WebSocket: 80,
-  'socket.io': 60,
-};
+const communication: SkillItem[] = [
+  {name: 'REST', img: restLogo},
+  {name: 'WebSocket', img: webSocketLogo},
+  {name: 'socket.io', img: socketIoLogo},
+];
 
-const databases = {
-  MySQL: 98,
-  PostgreSQL: 97,
-  NoSQL: 80,
-  firebase: 60,
-  DynamoDB: 55,
-};
+const databases: SkillItem[] = [
+  {name: 'MySQL', img: mysqlLogo},
+  {name: 'PostgreSQL', img: postgresqlLogo},
+  {name: 'NoSQL', img: nosqlLogo},
+  {name: 'firebase', img: firebaseLogo},
+  {name: 'DynamoDB', img: dynamoDbLogo},
+]
 
-const testing = {
-  'end to end ': 100,
-  unit: 90,
-  integration: 80,
-};
+const testing: SkillItem[] = [
+  {name: 'end to end', img: end2endTestingLogo},
+  {name: 'unit', img: unitTestingLogo},
+  {name: 'integration', img: integrationTestingLogo},
+];
 
-const cicd = {
-  'gitlab-ci': 70,
-  'github-ci': 70,
-  jenkins: 50,
-  travis: 50,
-};
+const ciCd: SkillItem[] = [
+  {name: 'gitlab-ci', img: gitlabLogo},
+  {name: 'github-ci', img: githubLogo},
+  {name: 'jenkins', img: jenkinsLogo},
+  {name: 'travis', img: travisLogo},
+]
 
-const languages = {
-  Deutsch: 100,
-  English: 99,
-};
+const languages: SkillItem[] = [
+  {name: 'Deutsch', img: germanyLogo},
+  {name: 'English', img: usaLogo},
+];
 </script>
 
 <i18n lang="yaml">
