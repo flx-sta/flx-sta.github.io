@@ -60,7 +60,7 @@ interface Skill {
 Chart.register(BarElement, CategoryScale, BarController, LinearScale);
 
 export default defineComponent({
-  components: {SkillsCollection, SectionWrapper, SkillsCollection},
+  components: {SkillsCollection, SectionWrapper},
   setup() {
     const {t} = useI18n({inheritLocale: true});
 
