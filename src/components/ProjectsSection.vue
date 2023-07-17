@@ -27,10 +27,10 @@ export default defineComponent({
     const projects = computed(() => [
        {
         title: 'Memmy App',
-        img: '',
+        img: 'https://avatars.githubusercontent.com/u/138403836?s=48&v=4',
         description: t(`memmy.description`),
         tags: [
-          { title: 'react-native', icon: ['fab', 'apple'] },
+          { title: 'iOS', icon: ['fab', 'apple'] },
           { title: 'react-native', icon: ['fab', 'react'] },
           { title: 'ts' },
         ],
