@@ -25,6 +25,28 @@ export default defineComponent({
     const { t } = useI18n({ inheritLocale: true });
 
     const projects = computed(() => [
+       {
+        title: 'Memmy App',
+        img: '',
+        description: t(`memmy.description`),
+        tags: [
+          { title: 'react-native', icon: ['fab', 'apple'] },
+          { title: 'react-native', icon: ['fab', 'react'] },
+          { title: 'ts' },
+        ],
+        links: [
+          {
+            title: 'GitHub',
+            url: 'https://github.com/Memmy-App/memmy',
+            icon: ['fab', 'github'],
+          },
+          {
+            title: t('Website'),
+            url: 'https://apps.apple.com/de/app/memmy-for-lemmy/id6450204299',
+            icon: ['fas', 'link'],
+          }
+        ],
+      },
       {
         title: 'RaftModding',
         img: 'https://www.raftmodding.com/images/raftmodding.png',
@@ -178,6 +200,8 @@ en:
       description: The Flashpoint Launcher (FPL) is a desktop application made for browsing, storing and launching other applications (games, animations, web apps etc.). It is specifically made for BlueMaxima's Flashpoint, which is a web preservation project.
   simpleCovidDashboard:
     description: A simple dashboard that grabs the current worldwide covid19 numbers and displays them. Additionally you can load the numbers of freely choosable country via an input at the top.
+  memmy:
+    description: An Apollo inspired open-source iOS client for Lemmy built with React-Native.
 de:
   title: Projekte
   Website: Webseite
@@ -194,4 +218,6 @@ de:
       description: Der Flashpoint Launcher (FPL) ist eine Desktop Applikation zum durchsuchen, speichern und starten anderer Applikationen (Games, Animationen, Webapps etc.). Es wurde speziell für BlueMaxima's Flashpoint gemacht, welches ein "web preservation" Projekt ist.
   simpleCovidDashboard:
     description: Ein simples Dashboard das die aktuellen weltweiten COVID19 Zahlen ausgibt. Über ein Eingabefeld kann außerdem ein Land ausgewählt werden um die Daten dieses Landes zu erhalten.
+  memmy:
+    description: Ein von "Apollo" inspirierter open-source iOS client für lemmy. Gebaut mit React-Native.
 </i18n>
