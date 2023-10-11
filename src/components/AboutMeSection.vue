@@ -110,7 +110,7 @@
                 duration-500
               "
             />
-            {{ t('city') }}, {{ t('country') }}
+            {{ /*t('city') + "," + */t('country') }}
           </p>
           <p class="py-8 text-sm">
             {{ t('description') }}
@@ -218,22 +218,17 @@ export default defineComponent({
 en:
   title: About Me
   jobTitle: Full Stack Developer
-  city: Cologne
-  country: Germany
+  country: United States
   description: >
-    As an experienced developer I'm always looking for new challenges.
+    As an experienced Full-Stack Engineer I'm always looking for new challenges.
     I love to try out new technologies or getting more insight into the
-    known ones. My main focus is on javascript/typescript and its major
-    tools like Node.js, Vue.js, Electron etc.
+    known ones
 de:
   title: Über Mich
   jobTitle: Full Stack Entwickler
-  city: Köln
-  country: Deutschland
+  country: Vereinigte Staaten
   description: >
-    Als erfahrener Entwickler suche ich immer nach neuen Herausforderungen.
+    Als erfahrener Full-Stack Engineer suche ich immer nach neuen Herausforderungen.
     Ich liebe es neue Technologien auszuprobieren oder ein tieferen Einblick 
     in mir bekannte Technologien zu werfen.
-    Mein Fokus liegt auf Javascript/Typescript und die 
-    Haupttools Node.js, Vue.js, Electron etc.
 </i18n>
