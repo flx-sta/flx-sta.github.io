@@ -217,18 +217,18 @@ export default defineComponent({
 <i18n lang="yaml">
 en:
   title: About Me
-  jobTitle: Full Stack Developer
+  jobTitle: Full Stack Software Engineer
   country: United States
   description: >
-    As an experienced Full-Stack Engineer I'm always looking for new challenges.
-    I love to try out new technologies or getting more insight into the
-    known ones
+    Experienced Full-Stack Software Engineer/Team Lead with 8 years of experience in React.js, Java, and Scrum. 
+    Proven ability to develop high-quality, scalable applications and automation solutions. 
+    Proven track record of team leadership and project management.
 de:
   title: Über Mich
-  jobTitle: Full Stack Entwickler
+  jobTitle: Full Stack Software Engineer
   country: Vereinigte Staaten
   description: >
-    Als erfahrener Full-Stack Engineer suche ich immer nach neuen Herausforderungen.
-    Ich liebe es neue Technologien auszuprobieren oder ein tieferen Einblick 
-    in mir bekannte Technologien zu werfen.
+    Erfahrener Full-Stack-Softwareentwickler/Teamleiter mit 8 Jahren Erfahrung in React.js, Java und Scrum. 
+    Nachgewiesene Fähigkeit zur Entwicklung hochwertiger, skalierbarer Anwendungen und Automatisierungslösungen. 
+    Bewährte Erfolgsbilanz in der Teamführung und im Projektmanagement.
 </i18n>
