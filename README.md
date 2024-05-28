@@ -1,3 +1,3 @@
-# Felix Staud Portfolio
+# Portfolio
 
 https://flx-sta.github.io/
