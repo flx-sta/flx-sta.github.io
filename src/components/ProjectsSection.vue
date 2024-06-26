@@ -115,24 +115,6 @@ export default defineComponent({
         description: t(`peregrineCms.description`),
       },
       {
-        title: 'almost-no-durability mod',
-        img: 'https://raw.githubusercontent.com/Felix-Staud/raft-mods/main/almost-no-durability/almost-no-durability/icon.png',
-        description: t(`almostNoDurabilityMod.description`),
-        tags: [{ title: 'C#' }],
-        links: [
-          {
-            title: 'GitHub',
-            url: 'https://github.com/Felix-Staud/raft-mods/tree/main/almost-no-durability',
-            icon: ['fab', 'github'],
-          },
-          {
-            title: t('Website'),
-            url: 'https://www.raftmodding.com/mods/almost-no-durability',
-            icon: ['fas', 'link'],
-          },
-        ],
-      },
-      {
         title: 'portfolio',
         img: 'https://raw.githubusercontent.com/Felix-Staud/portfolio/main/src/assets/logo.svg',
         description: t(`portfolio.description`),
@@ -214,8 +196,6 @@ en:
     description: A website to share mods/tools for the Videogame Raft.
   peregrineCms:
     description: An api first, head optional cms with based on vuejs and apache sling.
-  almostNoDurabilityMod:
-    description: A small Raft mod to increate item durability. Originally coded by me
   portfolio:
     description: The GitHub project for this website. Auto deployment via github-actions.
   flashpointProject:
@@ -234,8 +214,6 @@ de:
     description: Eine Webseite um Mods/Tools für das Computerspiel Raft zu teilen.
   peregrineCms:
     description: Eine API-first, head optional CMS das auf Vue.js und Apache-Sling basiert.
-  almostNoDurabilityMod:
-    description: Ein kleiner Raft mod der die Haltbarkeit von Gegenständen verbessert. Orignal von mir entwickelt.
   portfolio:
     description: Das GitHub Projekt für diese Webseite. Automatisches deployment via github-actions.
   flashpointProject:
