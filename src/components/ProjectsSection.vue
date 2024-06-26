@@ -25,6 +25,27 @@ export default defineComponent({
     const { t } = useI18n({ inheritLocale: true });
 
     const projects = computed(() => [
+      {
+        title: 'Pokerogue',
+        img: 'https://pokerogue.net/logo512.png',
+        description: t(`pokerogue.description`),
+        tags: [
+          { title: 'phaser' },
+          { title: 'ts' },
+        ],
+        links: [
+          {
+            title: 'GitHub',
+            url: 'https://github.com/pagefaultgames/pokerogue',
+            icon: ['fab', 'github'],
+          },
+          {
+            title: t('Website'),
+            url: 'https://pokerogue.net/',
+            icon: ['fas', 'link'],
+          }
+        ],
+      },
        {
         title: 'Memmy App',
         img: 'https://avatars.githubusercontent.com/u/138403836?s=48&v=4',
@@ -187,6 +208,8 @@ export default defineComponent({
 en:
   title: Projects
   Website: Website
+  pokerogue:
+    description: A Pokémon fangame heavily inspired by the roguelite genre.
   raftmodding:
     description: A website to share mods/tools for the Videogame Raft.
   peregrineCms:
@@ -205,6 +228,8 @@ en:
 de:
   title: Projekte
   Website: Webseite
+  pokerogue:
+    description: Ein Pokémon fangame, stark inspiriert durch das roguelite genre.
   raftmodding:
     description: Eine Webseite um Mods/Tools für das Computerspiel Raft zu teilen.
   peregrineCms:
