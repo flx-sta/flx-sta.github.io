@@ -191,7 +191,7 @@ en:
   title: Projects
   Website: Website
   pokerogue:
-    description: A Pokémon fangame heavily inspired by the roguelite genre.
+    description: A Pokémon fangame heavily inspired by the roguelite genre. Around 70k concurrent users (CCU). 
   raftmodding:
     description: A website to share mods/tools for the Videogame Raft.
   peregrineCms:
