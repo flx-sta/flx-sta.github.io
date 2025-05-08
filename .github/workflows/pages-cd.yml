@@ -34,7 +34,7 @@ jobs:
         run: npm run build
 
       - name: Upload build output
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@latest
         with:
           path: ./dist
 
@@ -47,10 +47,10 @@ jobs:
 
     steps:
       - name: Download build output
-        uses: actions/download-pages-artifact@v2
+        uses: actions/download-pages-artifact@latest
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@latest
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
