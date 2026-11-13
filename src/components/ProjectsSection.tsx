@@ -18,15 +18,33 @@ const projects = [
     ],
   },
   {
-    key: 'peregrine',
-    title: 'Peregrine CMS',
-    tags: ['Vue.js', 'Java', 'Apache Sling'],
+    key: 'pontoon',
+    title: 'Mozilla Pontoon',
+    tags: ['TypeScript', 'React', 'i18next'],
     links: [
-      { label: 'github', url: 'https://github.com/headwirecom/peregrine-cms' },
+      { label: 'github', url: 'https://github.com/mozilla/pontoon' },
+      {
+        label: 'sourceHighlighting',
+        url: 'https://github.com/mozilla/pontoon/pull/3328',
+      },
+      {
+        label: 'editorHighlighting',
+        url: 'https://github.com/mozilla/pontoon/pull/3341',
+      },
+      { label: 'website', url: 'https://pontoon.mozilla.org/' },
+    ],
+  },
+  {
+    key: 'vitest',
+    title: 'Vitest',
+    tags: ['TypeScript', 'Vite'],
+    links: [
+      { label: 'github', url: 'https://github.com/vitest-dev/vitest' },
       {
         label: 'contribution',
-        url: 'https://github.com/headwirecom/peregrine-cms/pull/935',
+        url: 'https://github.com/vitest-dev/vitest/pull/9649',
       },
+      { label: 'website', url: 'https://vitest.dev/' },
     ],
   },
   {
@@ -69,12 +87,16 @@ const copy = {
     technologies: 'Technologies',
     github: 'GitHub',
     contribution: 'Example PR',
+    sourceHighlighting: 'Source highlighting PR',
+    editorHighlighting: 'Editor highlighting PR',
     website: 'Website',
     archive: 'Older projects',
     pokerogue:
       'A browser game inspired by Pokémon and roguelites. I refactored the game’s API client and helped introduce Mozilla Pontoon for localization.',
-    peregrine:
-      'A CMS built on Apache Sling and Vue. I integrated CodeMirror into its structured content editor.',
+    pontoon:
+      'Mozilla’s localization platform. I fixed i18next placeholder highlighting in source strings, added it to the translation editor, and wrote regression tests for both.',
+    vitest:
+      'A testing framework built on Vite. I updated the documentation and fixed a broken link in the CLI warning for hanging processes.',
     memmy:
       'A mobile client for Lemmy inspired by Apollo. I contributed fixes to the app’s localization.',
     flashpoint:
@@ -86,12 +108,16 @@ const copy = {
     technologies: 'Technologien',
     github: 'GitHub',
     contribution: 'Beispiel-PR',
+    sourceHighlighting: 'Quelltext-Hervorhebung (PR)',
+    editorHighlighting: 'Editor-Hervorhebung (PR)',
     website: 'Website',
     archive: 'Ältere Projekte',
     pokerogue:
       'Ein von Pokémon und Roguelites inspiriertes Browserspiel. Ich habe den API-Client überarbeitet und Mozilla Pontoon für die Lokalisierung mit eingeführt.',
-    peregrine:
-      'Ein CMS auf Basis von Apache Sling und Vue. Ich habe CodeMirror in den Editor für strukturierte Inhalte integriert.',
+    pontoon:
+      'Mozillas Plattform für Lokalisierung. Ich habe die Hervorhebung von i18next-Platzhaltern im Quelltext korrigiert, im Übersetzungseditor ergänzt und beides mit Regressionstests abgesichert.',
+    vitest:
+      'Ein Testframework auf Basis von Vite. Ich habe die Dokumentation verbessert und einen defekten Link in der CLI-Warnung für hängende Prozesse korrigiert.',
     memmy:
       'Ein von Apollo inspirierter mobiler Client für Lemmy. Ich habe Fehler in der Lokalisierung der App behoben.',
     flashpoint:

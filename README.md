@@ -12,15 +12,16 @@ npm run build
 npm run serve # Preview the production build
 ```
 
-English and German copy live in the relevant Vue component under `src/components/`:
-`AboutMeSection.vue`, `ExperienceSection.vue`, `ProjectsSection.vue`, and
-`SkillsSection.vue`. The contact URL is shared by the intro and footer in
+English and German copy live in the relevant React component under `src/components/`:
+`AboutMeSection.tsx`, `ExperienceSection.tsx`, `ProjectsSection.tsx`, and
+`SkillsSection.tsx`. The contact URL is shared by the intro and footer in
 `src/contact.ts`.
 
-Astro renders the Vue components during the build. The routes in
+Astro renders the React components during the build. The routes in
 `src/pages/[...locale].astro` generate `dist/index.html` and `dist/de/index.html`.
-Language links navigate between the generated pages, and CSS follows the system
-theme. The output does not include a client-side Vue runtime.
+The site follows the system color theme by default. Visitors can choose Light,
+Dark, or System in the header, and the browser remembers the choice across both
+languages. The output does not include a client-side React runtime.
 
 The deployment workflow builds `dist/` from `main` and publishes it to the
 `gh-pages` branch. GitHub Pages serves the static build and runs no application

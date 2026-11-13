@@ -36,10 +36,27 @@
   text-decoration: underline;
   text-underline-offset: 0.25em;
 }
-.headerLanguage {
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   flex-shrink: 0;
 }
-@media (max-width: 640px) {
+.themeSelect {
+  min-height: 2.4rem;
+  padding-inline: 0.35rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background-color: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.themeSelect:hover {
+  border-color: var(--accent);
+}
+@media (max-width: 760px) {
   .headerInner {
     flex-wrap: wrap;
   }
@@ -49,5 +66,14 @@
     margin: 0;
     padding-block: 0.2rem 0.35rem;
     font-size: 0.84rem;
+  }
+}
+@media (max-width: 400px) {
+  .siteHeader .headerInner {
+    width: calc(100% - 1.25rem);
+    column-gap: 0.5rem;
+  }
+  .headerControls nav svg {
+    display: none;
   }
 }

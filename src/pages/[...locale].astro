@@ -39,6 +39,57 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const key = 'portfolio-theme';
+
+        function applyTheme(theme) {
+          if (theme === 'light' || theme === 'dark') {
+            root.dataset.theme = theme;
+          } else {
+            delete root.dataset.theme;
+          }
+        }
+
+        function restoreTheme() {
+          try {
+            applyTheme(localStorage.getItem(key));
+          } catch {
+            // The theme can still be changed when storage is unavailable.
+          }
+        }
+
+        restoreTheme();
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const select = document.getElementById('color-theme');
+          const syncSelection = () => {
+            select.value = root.dataset.theme ?? 'system';
+          };
+
+          select.addEventListener('change', () => {
+            const theme = select.value;
+            applyTheme(theme);
+            try {
+              if (theme === 'system') localStorage.removeItem(key);
+              else localStorage.setItem(key, theme);
+            } catch {
+              // Keep the selection for this page even if it cannot be saved.
+            }
+          });
+
+          window.addEventListener('pageshow', (event) => {
+            if (!event.persisted) return;
+            restoreTheme();
+            syncSelection();
+          });
+
+          syncSelection();
+          select.hidden = false;
+        });
+      })();
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
