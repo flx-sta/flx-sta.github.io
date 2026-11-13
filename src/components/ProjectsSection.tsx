@@ -7,11 +7,11 @@ const projects = [
   {
     key: 'pokerogue',
     title: 'PokéRogue',
+    repository: 'pagefaultgames/pokerogue',
     tags: ['TypeScript', 'Phaser', 'Localization'],
     links: [
-      { label: 'github', url: 'https://github.com/pagefaultgames/pokerogue' },
       {
-        label: 'contribution',
+        label: 'apiRefactor',
         url: 'https://github.com/pagefaultgames/pokerogue/pull/4583',
       },
       { label: 'website', url: 'https://pokerogue.net/' },
@@ -20,9 +20,9 @@ const projects = [
   {
     key: 'pontoon',
     title: 'Mozilla Pontoon',
+    repository: 'mozilla/pontoon',
     tags: ['TypeScript', 'React', 'i18next'],
     links: [
-      { label: 'github', url: 'https://github.com/mozilla/pontoon' },
       {
         label: 'sourceHighlighting',
         url: 'https://github.com/mozilla/pontoon/pull/3328',
@@ -37,11 +37,11 @@ const projects = [
   {
     key: 'vitest',
     title: 'Vitest',
+    repository: 'vitest-dev/vitest',
     tags: ['TypeScript', 'Vite'],
     links: [
-      { label: 'github', url: 'https://github.com/vitest-dev/vitest' },
       {
-        label: 'contribution',
+        label: 'reporterLinkFix',
         url: 'https://github.com/vitest-dev/vitest/pull/9649',
       },
       { label: 'website', url: 'https://vitest.dev/' },
@@ -50,11 +50,11 @@ const projects = [
   {
     key: 'memmy',
     title: 'Memmy for Lemmy',
+    repository: 'Memmy-App/memmy',
     tags: ['React Native', 'TypeScript'],
     links: [
-      { label: 'github', url: 'https://github.com/Memmy-App/memmy' },
       {
-        label: 'contribution',
+        label: 'translationFixes',
         url: 'https://github.com/Memmy-App/memmy/pull/946',
       },
     ],
@@ -62,17 +62,20 @@ const projects = [
   {
     key: 'flashpoint',
     title: 'Flashpoint Launcher',
+    repository: 'FlashpointProject/launcher',
     tags: ['Electron', 'TypeScript'],
     links: [
-      { label: 'github', url: 'https://github.com/FlashpointProject/launcher' },
       {
-        label: 'contribution',
+        label: 'sortableColumns',
         url: 'https://github.com/FlashpointProject/launcher/pull/234',
       },
       { label: 'website', url: 'https://flashpointarchive.org/' },
     ],
   },
 ] as const;
+const pullRequestQuery = new URLSearchParams({
+  q: 'is:pr is:merged author:flx-sta',
+});
 const archive = [
   { title: 'RaftModding', url: 'https://www.raftmodding.com/' },
   {
@@ -86,9 +89,13 @@ const copy = {
     description: 'Open source projects I’ve contributed to.',
     technologies: 'Technologies',
     github: 'GitHub',
-    contribution: 'Example PR',
+    myPullRequests: 'My PRs',
+    apiRefactor: 'API client refactor',
     sourceHighlighting: 'Source highlighting PR',
     editorHighlighting: 'Editor highlighting PR',
+    reporterLinkFix: 'Reporter link fix',
+    translationFixes: 'Translation fixes',
+    sortableColumns: 'Sortable columns',
     website: 'Website',
     archive: 'Older projects',
     pokerogue:
@@ -107,9 +114,13 @@ const copy = {
     description: 'Open-Source-Projekte, zu denen ich beigetragen habe.',
     technologies: 'Technologien',
     github: 'GitHub',
-    contribution: 'Beispiel-PR',
+    myPullRequests: 'Meine PRs',
+    apiRefactor: 'API-Client überarbeitet',
     sourceHighlighting: 'Quelltext-Hervorhebung (PR)',
     editorHighlighting: 'Editor-Hervorhebung (PR)',
+    reporterLinkFix: 'Reporter-Link korrigiert',
+    translationFixes: 'Übersetzungen korrigiert',
+    sortableColumns: 'Sortierbare Spalten',
     website: 'Website',
     archive: 'Ältere Projekte',
     pokerogue:
@@ -136,19 +147,30 @@ export default function ProjectsSection({
   return (
     <SectionWrapper id={id} title={text.title} description={text.description}>
       <div className={styles.projectGrid}>
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.title}
-            title={project.title}
-            description={text[project.key]}
-            tagsLabel={text.technologies}
-            tags={project.tags}
-            links={project.links.map((link) => ({
-              label: text[link.label],
-              url: link.url,
-            }))}
-          />
-        ))}
+        {projects.map((project) => {
+          const repositoryUrl = `https://github.com/${project.repository}`;
+
+          return (
+            <ProjectCard
+              key={project.title}
+              title={project.title}
+              description={text[project.key]}
+              tagsLabel={text.technologies}
+              tags={project.tags}
+              links={[
+                { label: text.github, url: repositoryUrl },
+                {
+                  label: text.myPullRequests,
+                  url: `${repositoryUrl}/pulls?${pullRequestQuery}`,
+                },
+                ...project.links.map((link) => ({
+                  label: text[link.label],
+                  url: link.url,
+                })),
+              ]}
+            />
+          );
+        })}
       </div>
       <details className={styles.archive}>
         <summary>{text.archive}</summary>
