@@ -11,13 +11,9 @@
         <a href="https://www.linkedin.com/in/felix-s-28188719a/">LinkedIn</a>
       </div>
     </div>
-    <img
-      class="portrait"
-      src="@/assets/profile-picture.jpg"
-      alt=""
-      width="1067"
-      height="1600"
-    />
+    <div class="portrait">
+      <img :src="portraitSrc" alt="" width="2400" height="1600" />
+    </div>
   </section>
 </template>
 
@@ -27,6 +23,9 @@ import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
+  props: {
+    portraitSrc: { type: String, required: true },
+  },
   setup() {
     const { t } = useI18n({ inheritLocale: true });
     return { t, contactHref };
@@ -95,14 +94,22 @@ h1 {
 }
 
 .portrait {
-  display: block;
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
-  height: auto;
-  object-fit: cover;
-  object-position: center 34%;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 0.65rem;
+}
+
+.portrait img {
+  position: absolute;
+  inset: 0 auto auto 0;
+  /* Frame the face and shoulders within the original landscape photo. */
+  width: 391%;
+  max-width: none;
+  height: auto;
+  transform: translate(-43.25%, -32.25%);
 }
 
 @media (max-width: 640px) {
@@ -114,7 +121,6 @@ h1 {
   .portrait {
     width: min(48%, 10rem);
     aspect-ratio: 1;
-    object-position: center 30%;
   }
 }
 </style>

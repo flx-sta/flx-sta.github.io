@@ -3,7 +3,7 @@
     <a class="skip-link" href="#main-content">{{ t('skip') }}</a>
     <TheNavigation />
     <main id="main-content" class="page-width" tabindex="-1">
-      <AboutMeSection id="about-me" />
+      <AboutMeSection id="about-me" :portrait-src="portraitSrc" />
       <ExperienceSection id="experience" />
       <ProjectsSection id="projects" />
       <SkillsSection id="skills" />
@@ -14,7 +14,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import type { PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { Locale } from './i18n';
 import AboutMeSection from './components/AboutMeSection.vue';
 import ExperienceSection from './components/ExperienceSection.vue';
 import ProjectsSection from './components/ProjectsSection.vue';
@@ -23,6 +25,10 @@ import TheFooter from './components/TheFooter.vue';
 import TheNavigation from './components/TheNavigation.vue';
 
 export default defineComponent({
+  props: {
+    locale: { type: String as PropType<Locale>, required: true },
+    portraitSrc: { type: String, required: true },
+  },
   components: {
     AboutMeSection,
     ExperienceSection,
@@ -31,7 +37,9 @@ export default defineComponent({
     TheFooter,
     TheNavigation,
   },
-  setup() {
+  setup(props) {
+    const { locale } = useI18n({ useScope: 'global' });
+    locale.value = props.locale;
     const { t } = useI18n({ inheritLocale: true });
     return { t };
   },
