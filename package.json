@@ -2,6 +2,9 @@
   "version": "1.3.0",
   "description": "My Portfolio",
   "author": "flx-sta <50131232+flx-sta@users.noreply.github.com>",
+  "volta": {
+    "node": "26.13.1"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -13,8 +16,9 @@
   },
   "devDependencies": {
     "@astrojs/vue": "^7.1.5",
+    "@intlify/shared": "^11.4.19",
     "@intlify/unplugin-vue-i18n": "^11.2.8",
-    "@types/node": "^22.15.17",
+    "@types/node": "^26.6.6",
     "astro": "^7.4.11",
     "autoprefixer": "^10.2.6",
     "postcss": "^8.3.5",

@@ -2,7 +2,8 @@
 
 [flx-sta.github.io](https://flx-sta.github.io/)
 
-Use Node.js 22.23.4 or newer.
+Use the Node.js version pinned in `package.json`. Volta selects it
+automatically, and GitHub Actions uses the same pin.
 
 ```sh
 npm ci
