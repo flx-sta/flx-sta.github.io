@@ -1,0 +1,27 @@
+.languageLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  min-height: 2.4rem;
+  padding: 0.2rem 0.35rem 0.2rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.languageLinks svg {
+  margin-right: 0.15rem;
+}
+.languageLinks a {
+  padding: 0.25rem 0.35rem;
+  border-radius: 0.25rem;
+  color: var(--accent);
+}
+.languageLinks a:hover,
+.languageLinks a[aria-current='page'] {
+  background: var(--accent-soft);
+}
+.languageLinks a[aria-current='page'] {
+  font-weight: 700;
+}

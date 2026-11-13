@@ -1,0 +1,27 @@
+.portfolio {
+  min-height: 100vh;
+}
+
+.portfolio section[id] {
+  scroll-margin-top: 7.5rem;
+}
+
+.portfolio :focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.skipLink {
+  position: fixed;
+  z-index: 20;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.6rem 1rem;
+  transform: translateY(-200%);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.skipLink:focus {
+  transform: none;
+}

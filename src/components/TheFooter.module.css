@@ -1,0 +1,21 @@
+.siteFooter {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.footerInner,
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.3rem;
+}
+.footerInner {
+  justify-content: space-between;
+  padding-block: 1.25rem;
+}
+.siteFooter a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
