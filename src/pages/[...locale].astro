@@ -86,7 +86,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
           });
 
           syncSelection();
-          select.hidden = false;
+          select.parentElement.hidden = false;
         });
       })();
     </script>
@@ -112,5 +112,70 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <App locale={locale} portraitSrc={portrait.src} />
+    <script>
+      const languageSelect =
+        document.querySelector<HTMLSelectElement>('#site-language');
+      const languageControl = languageSelect?.parentElement;
+      if (languageSelect && languageControl) {
+        const currentOption = Array.from(languageSelect.options).find(
+          (option) => option.defaultSelected,
+        );
+        languageSelect.addEventListener('change', () => {
+          window.location.assign(languageSelect.value);
+        });
+        if (currentOption) {
+          window.addEventListener('pageshow', () => {
+            languageSelect.value = currentOption.value;
+          });
+        }
+        languageControl.hidden = false;
+      }
+
+      const sectionLinks = Array.from(
+        document.querySelectorAll<HTMLAnchorElement>('[data-section-link]'),
+      ).flatMap((link) => {
+        const section = document.getElementById(link.hash.slice(1));
+        return section ? [{ link, section }] : [];
+      });
+
+      function updateActiveSection() {
+        const { scrollHeight, clientHeight } = document.documentElement;
+        const atBottom =
+          scrollHeight > clientHeight &&
+          window.scrollY + clientHeight >= scrollHeight - 1;
+        const active =
+          (atBottom && sectionLinks.at(-1)) ||
+          sectionLinks.findLast(({ section }) => {
+            const offset = parseFloat(
+              getComputedStyle(section).scrollMarginTop,
+            );
+            return section.getBoundingClientRect().top <= offset + 1;
+          }) ||
+          sectionLinks[0];
+
+        for (const entry of sectionLinks) {
+          if (entry === active)
+            entry.link.setAttribute('aria-current', 'location');
+          else entry.link.removeAttribute('aria-current');
+        }
+      }
+
+      let frame: number | undefined;
+      function scheduleSectionUpdate() {
+        frame ??= requestAnimationFrame(() => {
+          frame = undefined;
+          updateActiveSection();
+        });
+      }
+
+      window.addEventListener('scroll', scheduleSectionUpdate, {
+        passive: true,
+      });
+      window.addEventListener('resize', scheduleSectionUpdate);
+      window.addEventListener('pageshow', scheduleSectionUpdate);
+      const main = document.getElementById('main-content');
+      if (main) new ResizeObserver(scheduleSectionUpdate).observe(main);
+      updateActiveSection();
+    </script>
   </body>
 </html>

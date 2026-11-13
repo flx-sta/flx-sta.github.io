@@ -35,14 +35,72 @@
   border-radius: 0.3rem;
   background: var(--accent-soft);
 }
+.contributions {
+  width: 100%;
+  padding-block: 0.65rem 1rem;
+  border-top: 1px solid var(--line);
+}
+.contributions h4 {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+.contributions ul {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.45rem;
+}
+.contributionHeading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.15rem 0.65rem;
+  font-size: 0.875rem;
+}
+.contributionHeading a {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  white-space: nowrap;
+}
+.contributions p {
+  margin-top: 0.15rem;
+  font-size: 0.82rem;
+}
 .projectLinks {
-  gap: 0.5rem 1rem;
+  gap: 0.375rem;
   margin-top: auto;
   color: var(--accent);
-  font-size: 0.92rem;
+  font-size: 0.75rem;
   font-weight: 650;
 }
 .projectLinks a {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+  padding: 0.1875rem 0.4375rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--surface));
+  border-radius: 0.375rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.projectLinks a:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.projectLinks svg {
+  flex: none;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+@media (pointer: coarse) {
+  .projectLinks a {
+    min-height: 44px;
+  }
 }
