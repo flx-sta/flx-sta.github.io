@@ -11,13 +11,9 @@
         <a href="https://www.linkedin.com/in/felix-s-28188719a/">LinkedIn</a>
       </div>
     </div>
-    <img
-      class="portrait"
-      src="@/assets/profile-picture.jpg"
-      alt=""
-      width="1067"
-      height="1600"
-    />
+    <div class="portrait">
+      <img :src="portraitSrc" alt="" width="2400" height="1600" />
+    </div>
   </section>
 </template>
 
@@ -27,6 +23,9 @@ import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
+  props: {
+    portraitSrc: { type: String, required: true },
+  },
   setup() {
     const { t } = useI18n({ inheritLocale: true });
     return { t, contactHref };
@@ -95,14 +94,22 @@ h1 {
 }
 
 .portrait {
-  display: block;
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
-  height: auto;
-  object-fit: cover;
-  object-position: center 34%;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 0.65rem;
+}
+
+.portrait img {
+  position: absolute;
+  inset: 0 auto auto 0;
+  /* Frame the face and shoulders within the original landscape photo. */
+  width: 391%;
+  max-width: none;
+  height: auto;
+  transform: translate(-43.25%, -32.25%);
 }
 
 @media (max-width: 640px) {
@@ -114,7 +121,6 @@ h1 {
   .portrait {
     width: min(48%, 10rem);
     aspect-ratio: 1;
-    object-position: center 30%;
   }
 }
 </style>
@@ -124,19 +130,22 @@ en:
   eyebrow: Engineering portfolio
   jobTitle: Senior Full Stack Software Engineer
   description: >-
-    I build web products and the APIs that power them. At headwire.com, Inc., I work
-    across TypeScript, Java, and Adobe Experience Manager, taking features from
-    technical design through production. I’ve also led engineering teams and helped
-    them ship faster with better tooling and build workflows.
+    I own the full lifecycle of complex features, from shaping requirements and
+    designing the architecture to launching, supporting, and improving them in
+    production. At headwire.com, Inc., I’ve owned the frontend architecture and
+    backend integrations for account management on a golf media platform. I bring
+    more than a decade of engineering experience and have led teams of up to ten
+    engineers.
   contact: Get in touch
 de:
   eyebrow: Portfolio
   jobTitle: Senior Full Stack Software Engineer
   description: >-
-    Ich entwickle Webanwendungen und die dazugehörigen APIs. Bei headwire.com, Inc.
-    setze ich mit TypeScript, Java und Adobe Experience Manager Funktionen vom
-    technischen Entwurf bis zum Produktivbetrieb um. Außerdem habe ich
-    Entwicklungsteams geleitet und ihre Arbeit mit besseren Tools und kürzeren
-    Build-Zeiten erleichtert.
+    Ich verantworte komplexe Funktionen über ihren gesamten Lebenszyklus, von
+    der Klärung der Anforderungen und dem Architekturentwurf bis zum
+    Produktivbetrieb und zur Weiterentwicklung. Bei headwire.com, Inc. habe ich
+    für die Kontoverwaltung einer Golf-Medienplattform die Frontend-Architektur
+    und die Backend-Integrationen verantwortet. Ich arbeite seit über zehn Jahren
+    in der Softwareentwicklung und habe Teams mit bis zu zehn Personen geleitet.
   contact: Kontakt aufnehmen
 </i18n>

@@ -10,7 +10,7 @@
         <a href="#projects">{{ t('work') }}</a>
         <a href="#skills">{{ t('toolkit') }}</a>
       </nav>
-      <LocalesDropDown class="header-language" />
+      <LanguageLinks class="header-language" />
     </div>
   </header>
 </template>
@@ -18,10 +18,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
-import LocalesDropDown from './LocalesDropDown.vue';
+import LanguageLinks from './LanguageLinks.vue';
 
 export default defineComponent({
-  components: { LocalesDropDown },
+  components: { LanguageLinks },
   setup() {
     const { t } = useI18n({ inheritLocale: true });
     return { t };

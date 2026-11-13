@@ -1,0 +1,58 @@
+---
+import App from '../App.vue';
+import portrait from '../assets/profile-picture.jpg';
+import { localeLinks, type Locale } from '../i18n';
+
+export function getStaticPaths() {
+  return localeLinks.map(({ code, href }) => ({
+    params: { locale: href === '/' ? undefined : code },
+    props: { locale: code },
+  }));
+}
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const metadata = {
+  en: {
+    description: 'Felix Staud is a senior full stack software engineer with over a decade of experience owning features from requirements and architecture through launch and production.',
+    imageAlt: "Felix Staud's portfolio icon",
+  },
+  de: {
+    description: 'Felix Staud ist Senior Full Stack Software Engineer mit über zehn Jahren Erfahrung und verantwortet Funktionen von den Anforderungen bis zum Produktivbetrieb.',
+    imageAlt: 'Das Portfolio-Symbol von Felix Staud',
+  },
+};
+const { description, imageAlt } = metadata[locale];
+const title = 'Felix Staud | Senior Full Stack Software Engineer';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {localeLinks.map(({ code, href }) => (
+      <link rel="alternate" hreflang={code} href={new URL(href, Astro.site)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/logo.png', Astro.site)} />
+    <meta property="og:image:alt" content={imageAlt} />
+  </head>
+  <body>
+    <App locale={locale} portrait-src={portrait.src} />
+  </body>
+</html>
