@@ -1,109 +1,86 @@
 <template>
-  <div
-    class="
-      w-full
-      py-4
-      px-8
-      mt-10
-      bg-white
-      dark:bg-gray-800
-      shadow-lg
-      rounded-lg
-      border-2
-      dark:border-gray-600
-      transform
-      duration-500
-      hover:scale-105
-    "
-  >
-    <div class="flex justify-center md:justify-end -mt-16">
-      <img
-        class="
-          w-20
-          h-20
-          object-cover
-          rounded-full
-          border-2
-          bg-white
-          dark:bg-gray-800 dark:border-gray-600
-          duration-500
-          transition
-        "
-        :src="img"
-        :alt="`${title}-logo`"
-      />
-    </div>
-    <div>
-      <h2 class="text-gray-800 dark:text-gray-200 text-3xl font-semibold break-words">
-        {{ title }}
-      </h2>
-      <p class="mt-2 text-gray-600 dark:text-gray-300">
-        <slot></slot>
-      </p>
-    </div>
-    <div class="tags mb-5 mt-5">
-      <AppTag v-for="tag in tags" v-bind="tag" />
-    </div>
-    <div class="flex justify-around items-stretch w-full">
-      <a
-        v-for="link in links"
-        class="link"
-        :href="link.url"
-        target="_blank"
-        :title="link.title"
-      >
-        <fa-icon
-          :icon="link.icon"
-          size="2x"
-          class="
-            text-gray-700
-            dark:text-gray-300
-            hover:text-green-700
-            dark:hover:text-green-500
-            transition-colors
-          "
-        />
+  <article class="project-card">
+    <h3>{{ title }}</h3>
+    <p>{{ description }}</p>
+    <ul class="tags" :aria-label="tagsLabel">
+      <li v-for="tag in tags" :key="tag">{{ tag }}</li>
+    </ul>
+    <div class="project-links">
+      <a v-for="link in links" :key="link.url" :href="link.url" :aria-label="link.label + ': ' + title">
+        {{ link.label }}
       </a>
     </div>
-  </div>
+  </article>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import AppTag from './AppTag.vue';
-
-interface ProjectLink {
-  url: string;
-  icon: string | string[];
-  title: string;
-}
-
-interface ProjectTag {
-  title: string;
-  icon?: string | string[];
-  img?: string;
-}
+import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
-  components: {
-    AppTag,
-  },
   props: {
-    img: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    links: {
-      type: Array as () => ProjectLink[],
-      required: true,
-    },
-    tags: {
-      type: Array as () => ProjectTag[],
-    },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    tagsLabel: { type: String, required: true },
+    tags: { type: Array as PropType<string[]>, required: true },
+    links: { type: Array as PropType<{ label: string; url: string }[]>, required: true },
   },
 });
 </script>
+
+<style scoped>
+.project-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1.15rem, 3vw, 1.65rem);
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: var(--surface);
+}
+
+h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+p {
+  margin-top: 0.45rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.tags,
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+}
+
+.tags {
+  margin-block: 1rem;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.tags li {
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.3rem;
+  background: var(--accent-soft);
+}
+
+.project-links {
+  gap: 0.5rem 1rem;
+  margin-top: auto;
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+</style>

@@ -1,97 +1,78 @@
 <template>
-  <div class="dropdown-wrapper relative" :title="t('dropDown.title')">
-    <button
-      @click="show = !show"
-      class="
-        text-gray-400
-        py-2
-        px-2
-        whitespace-no-wrap
-        rounded
-        transition
-        duration-300
-        w-20
-        uppercase
-      "
+  <div class="language-select">
+    <!-- Tabler Icons: world. See public/tabler-icons-license.txt. -->
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
     >
-      <fa-icon icon="globe" /> {{ locale }}
-    </button>
-    <div
-      v-if="show"
-      class="
-        bg-gray-600
-        dropdown-menu
-        text-white
-        mt-1
-        rounded
-        absolute
-        z-10
-        shadow-lg
-        w-auto
-      "
-    >
-      <ul class="list-none overflow-hidden rounded">
-        <li v-for="item in items">
-          <a
-            href="#"
-            class="
-              flex
-              items-center
-              justify-between
-              w-20
-              py-3
-              px-3
-              transition
-              duration-300
-              hover:bg-gray-500
-              right-0
-              uppercase
-            "
-            @click.prevent="select(item)"
-          >
-            {{ item }}
-            <fa-icon icon="check" :class="{ 'opacity-0': item !== locale }" />
-          </a>
-        </li>
-      </ul>
-    </div>
+      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+      <path d="M3.6 9h16.8" />
+      <path d="M3.6 15h16.8" />
+      <path d="M11.5 3a17 17 0 0 0 0 18" />
+      <path d="M12.5 3a17 17 0 0 1 0 18" />
+    </svg>
+    <select v-model="locale" :aria-label="t('label')">
+      <option v-for="item in locales" :key="item" :value="item" :lang="item">
+        {{ item.toUpperCase() }}
+      </option>
+    </select>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue';
+import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 import i18n from '@/i18n';
 import locales from '@/assets/locales.json';
 
 export default defineComponent({
   setup() {
-    const items = reactive(locales);
-    const show = ref(false);
-    const { t, locale } = useI18n({ inheritLocale: true });
-
-    return {
-      show,
-      items,
-      t,
-      locale,
-    };
-  },
-  methods: {
-    select(item: string) {
-      this.show = false;
-      i18n.global.locale.value = item;
-
-    },
+    const { t } = useI18n({ inheritLocale: true });
+    return { locale: i18n.global.locale, locales, t };
   },
 });
 </script>
 
 <i18n lang="yaml">
 en:
-  dropDown:
-    title: Change language
+  label: Language
 de:
-  dropDown:
-    title: Sprache ändern
+  label: Sprache
 </i18n>
+
+<style scoped>
+.language-select {
+  position: relative;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.language-select svg {
+  position: absolute;
+  top: 50%;
+  left: 0.55rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.language-select select {
+  min-height: 2.4rem;
+  padding: 0.25rem 0.35rem 0.25rem 1.75rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: var(--surface);
+  color: var(--accent);
+}
+
+.language-select select:hover {
+  background: var(--accent-soft);
+}
+</style>

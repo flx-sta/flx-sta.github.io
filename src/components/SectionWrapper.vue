@@ -1,60 +1,48 @@
 <template>
-  <div class="section-wrapper items-center px-5 pb-10 pt-5">
-    <h2
-      ref="h2"
-      class="
-        border-animation-left-right-left
-        font-semibold
-        text-gray-700 text-4xl lg:text-5xl
-        dark:text-gray-300
-        my-5
-        py-5
-        text-center
-        transition duration-500
-      "
-    >
-      {{ title }}
-    </h2>
-    <slot></slot>
-  </div>
+  <section class="content-section">
+    <header class="section-heading">
+      <p v-if="eyebrow" class="eyebrow">{{ eyebrow }}</p>
+      <h2>{{ title }}</h2>
+      <p v-if="description" class="section-description">{{ description }}</p>
+    </header>
+    <slot />
+  </section>
 </template>
 
 <script lang="ts">
-import { useIntersectionObserver } from '@/compositions';
 import { defineComponent } from 'vue';
-import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
   props: {
-    title: {
-      type: String,
-      required: true,
-    },
-  },
-  setup() {
-    const { locale } = useI18n({ inheritLocale: true });
-
-    return {
-      locale,
-      ...useIntersectionObserver(({ target, isIntersecting }) => {
-        if (isIntersecting) {
-          setTimeout(() => {
-            target.classList.add('in-view');
-          }, 300);
-        }
-      }),
-    };
-  },
-  watch: {
-    locale() {
-      this.IntersectionObserver.unobserve(this.$refs.h2 as Element);
-      (this.$refs.h2 as Element).classList.remove('in-view');
-      this.IntersectionObserver.observe(this.$refs.h2 as Element);
-
-    },
-  },
-  async mounted() {
-    this.IntersectionObserver.observe(this.$refs.h2 as Element);
+    title: { type: String, required: true },
+    eyebrow: String,
+    description: String,
   },
 });
 </script>
+
+<style scoped>
+.content-section {
+  border-top: 1px solid var(--line);
+  padding-block: clamp(2.75rem, 6vw, 4.75rem);
+}
+
+.section-heading {
+  margin-bottom: clamp(1.6rem, 3vw, 2.5rem);
+}
+
+h2 {
+  margin-block: 0.2rem;
+  font-size: clamp(1.9rem, 5vw, 3.15rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.section-description {
+  max-width: 60ch;
+  margin-top: 0.7rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+</style>

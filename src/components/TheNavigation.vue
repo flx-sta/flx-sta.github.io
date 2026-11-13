@@ -1,171 +1,107 @@
 <template>
-  <Disclosure
-    as="nav"
-    class="bg-gray-700 dark:bg-gray-900 fixed inset-x-0 top-0 z-20 w-full shadow-lg transition duration-500"
-    v-slot="{ open }"
-  >
-    <div class="max-w-full w-full px-2 sm:px-6 lg:px-8">
-      <div class="relative flex items-center h-16">
-        <div class="inset-y-0 left-0 flex items-center sm:hidden">
-          <div class="w-10">
-            <!-- Mobile menu button-->
-            <DisclosureButton
-              class="
-                inline-flex
-                items-center
-                justify-center
-                p-2
-                rounded-md
-                text-gray-400
-                hover:text-white hover:bg-gray-700
-                focus:outline-none
-                focus:ring-2
-                focus:ring-inset
-                focus:ring-white
-              "
-            >
-              <span class="sr-only">{{ t('sr.mainMenu') }}</span>
-              <fa-icon
-                icon="bars"
-                v-if="!open"
-                class="block h-6 w-6"
-                aria-hidden="true"
-              />
-              <fa-icon
-                icon="times"
-                v-else
-                class="block h-6 w-6"
-                aria-hidden="true"
-              />
-            </DisclosureButton>
-          </div>
-        </div>
-        <div class="flex items-center justify-between h-full w-full">
-          <div class="flex items-center">
-            <img class="block h-9 w-auto" src="@/assets/logo.svg" alt="Logo" />
-          </div>
-          <h1
-            class="
-              flex
-              items-center
-              ml-5
-              text-white text-xl
-              lg:text-3xl
-              tracking-wider
-            "
-          >
-            Felix Staud
-          </h1>
-          <div class="hidden sm:block ml-auto">
-            <div class="flex space-x-4 h-full items-center">
-              <a
-                v-for="item in navigation"
-                :key="item.name"
-                :href="item.url"
-                class="
-                  text-gray-300
-                  hover:bg-gray-700 hover:text-white
-                  px-3
-                  py-2
-                  rounded-md
-                  text-sm
-                  font-medium
-                "
-                >{{ item.name }}</a
-              >
-            </div>
-          </div>
-          <div class="h-16 ml-5 flex items-center">
-            <LocalesDropDown />
-          </div>
-        </div>
-      </div>
+  <header class="site-header">
+    <div class="page-width header-inner">
+      <a class="brand" href="#about-me">
+        <img src="/favicon.svg" alt="" width="28" height="28" />
+        <span>Felix Staud</span>
+      </a>
+      <nav :aria-label="t('navigation')" class="nav-links">
+        <a href="#experience">{{ t('experience') }}</a>
+        <a href="#projects">{{ t('work') }}</a>
+        <a href="#skills">{{ t('toolkit') }}</a>
+      </nav>
+      <LocalesDropDown class="header-language" />
     </div>
-
-    <DisclosurePanel class="sm:hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        <a
-          v-for="item in navigation"
-          :key="item.name"
-          :href="item.url"
-          class="
-            text-gray-300
-            hover:bg-gray-700 hover:text-white
-            block
-            px-3
-            py-2
-            rounded-md
-            text-base
-            font-medium
-          "
-          >{{ item.name }}</a
-        >
-      </div>
-    </DisclosurePanel>
-  </Disclosure>
+  </header>
 </template>
 
 <script lang="ts">
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-} from '@headlessui/vue';
-import { computed, defineComponent, reactive, ref } from 'vue';
+import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 import LocalesDropDown from './LocalesDropDown.vue';
 
 export default defineComponent({
-  components: {
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
-    LocalesDropDown,
-  },
+  components: { LocalesDropDown },
   setup() {
-    const open = ref(false);
-    const { t, locale } = useI18n({ inheritLocale: true });
-    const navigation = computed(() => [
-      { name: t('aboutMe.title'), url: '#about-me' },
-      { name: t('skills.title'), url: '#skills' },
-      { name: t('projects.title'), url: '#projects' },
-    ]);
-
-    return {
-      navigation,
-      open,
-      t,
-      locale,
-    };
+    const { t } = useI18n({ inheritLocale: true });
+    return { t };
   },
 });
 </script>
 
+<style scoped>
+.site-header {
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.header-inner {
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 1.25rem;
+  padding-block: 0.45rem;
+}
+
+.brand,
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  gap: 0.6rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.nav-links {
+  gap: clamp(0.75rem, 3vw, 1.8rem);
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.nav-links a:hover,
+.brand:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.header-language {
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    order: 1;
+    width: 100%;
+    margin: 0;
+    padding-block: 0.2rem 0.35rem;
+    font-size: 0.84rem;
+  }
+}
+</style>
+
 <i18n lang="yaml">
 en:
-  aboutMe:
-    title: About Me
-  skills:
-    title: Skills
-  projects:
-    title: Projects
-  sr:
-    mainMenu: Open menu
+  navigation: Main navigation
+  experience: Experience
+  work: Work
+  toolkit: Toolkit
 de:
-  aboutMe:
-    title: Über Mich
-  skills:
-    title: Kompetenzen
-  projects:
-    title: Projekte
-  sr:
-    mainMenu: Menü öffnen
+  navigation: Hauptnavigation
+  experience: Berufserfahrung
+  work: Projekte
+  toolkit: Technologien
 </i18n>

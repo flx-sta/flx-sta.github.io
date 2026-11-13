@@ -1,234 +1,142 @@
 <template>
-  <SectionWrapper :title="t('title')">
-    <div
-      class="
-        max-w-4xl
-        flex
-        items-center
-        h-auto
-        flex-wrap
-        mx-auto
-        mt-32
-        lg:my-0
-        dark:text-gray-300
-      "
-    >
-      <!--Main Col-->
-      <div
-        id="profile"
-        class="
-          w-full
-          lg:w-3/5
-          rounded-lg
-          lg:rounded-l-lg lg:rounded-r-none
-          shadow-2xl
-          bg-white
-          mx-6
-          lg:mx-0
-          dark:bg-gray-800
-          transition
-          duration-500
-        "
-      >
-        <div class="p-4 md:p-12 text-center lg:text-left">
-          <!-- Image for mobile view-->
-          <div
-            class="
-              block
-              lg:hidden
-              rounded-full
-              shadow-xl
-              mx-auto
-              -mt-16
-              h-48
-              w-48
-              bg-cover bg-center
-            "
-            :style="{
-              backgroundImage: `url(${profilePicture})`,
-              backgroundPosition: '0px -18px',
-            }"
-          ></div>
-
-          <h1 class="text-3xl font-bold pt-8 lg:pt-0">Felix Staud</h1>
-          <div
-            class="
-              mx-auto
-              lg:mx-0
-              w-4/5
-              pt-3
-              border-b-2 border-green-500
-              opacity-25
-            "
-          ></div>
-          <p
-            class="
-              pt-4
-              text-base
-              font-bold
-              flex
-              items-center
-              justify-center
-              lg:justify-start
-            "
-          >
-            <fa-icon
-              icon="briefcase"
-              class="
-                h-5
-                w-5
-                mr-4
-                text-green-700
-                dark:text-green-500
-                transition
-                duration-500
-              "
-            />
-            {{ t('jobTitle') }}
-          </p>
-          <p
-            class="
-              pt-2
-              text-gray-600 text-xs
-              dark:text-gray-400
-              lg:text-sm
-              flex
-              items-center
-              justify-center
-              lg:justify-start
-            "
-          >
-            <fa-icon
-              icon="map-marker-alt"
-              class="
-                h5
-                w-5
-                mr-4
-                text-green-700
-                dark:text-green-500
-                transition
-                duration-500
-              "
-            />
-            {{ /*t('city') + "," + */t('country') }}
-          </p>
-          <p class="py-8 text-sm">
-            {{ t('description') }}
-          </p>
-
-          <div
-            class="
-              mt-6
-              pb-16
-              lg:pb-0
-              w-4/5
-              lg:w-full
-              mx-auto
-              flex flex-wrap
-              items-center
-              justify-between
-            "
-          >
-            <a
-              v-for="contactLink in contactLinks"
-              :key="contactLink.title"
-              class="link transform duration-500 hover:scale-125"
-              :href="contactLink.url"
-              target="_blank"
-              :title="contactLink.title"
-            >
-              <fa-icon
-                :icon="contactLink.icon"
-                size="2x"
-                class="
-                  text-gray-700
-                  hover:text-green-700
-                  dark:text-gray-300 dark:hover:text-green-500
-                  transition-colors
-                "
-              />
-            </a>
-          </div>
-
-          <!-- Use https://simpleicons.org/ to find the svg for your preferred product -->
-        </div>
-      </div>
-
-      <!--Img Col-->
-      <div class="w-full lg:w-2/5">
-        <!-- Big profile image for side bar (desktop) -->
-        <img
-          src="@/assets/profile-picture.jpg"
-          class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block"
-        />
-        <!-- Image from: http://unsplash.com/photos/MP0IUfwrn0A -->
+  <section class="intro">
+    <div class="intro-copy">
+      <p class="eyebrow">{{ t('eyebrow') }}</p>
+      <h1>Felix Staud</h1>
+      <p class="role">{{ t('jobTitle') }}</p>
+      <p class="description">{{ t('description') }}</p>
+      <div class="intro-links">
+        <a class="contact-button" :href="contactHref">{{ t('contact') }}</a>
+        <a href="https://github.com/flx-sta">GitHub</a>
+        <a href="https://www.linkedin.com/in/felix-s-28188719a/">LinkedIn</a>
       </div>
     </div>
-  </SectionWrapper>
+    <img
+      class="portrait"
+      src="@/assets/profile-picture.jpg"
+      alt=""
+      width="1067"
+      height="1600"
+    />
+  </section>
 </template>
 
 <script lang="ts">
-import profilePicture from '@/assets/profile-picture.jpg';
-import { useMail } from '@/compositions';
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
+import { contactHref } from '@/contact';
 import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
-import SectionWrapper from './SectionWrapper.vue';
 
 export default defineComponent({
-  components: {
-    Popover,
-    PopoverButton,
-    PopoverPanel,
-    SectionWrapper,
-  },
   setup() {
     const { t } = useI18n({ inheritLocale: true });
-    const { mail } = useMail();
-
-    const contactLinks = [
-      {
-        title: 'E-Mail',
-        url: `mailto:${mail.to}?subject=${mail.subject}`,
-        icon: 'envelope',
-      },
-      {
-        title: 'GitHub',
-        url: 'https://github.com/Felix-Staud',
-        icon: ['fab', 'github'],
-      },
-      {
-        title: 'LinkedIn',
-        url: 'https://www.linkedin.com/in/felix-s-28188719a/',
-        icon: ['fab', 'linkedin'],
-        hoverColor: '#2867B2',
-      },
-    ];
-
-    return {
-      profilePicture,
-      contactLinks,
-      t,
-    };
+    return { t, contactHref };
   },
 });
 </script>
 
+<style scoped>
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 18rem);
+  align-items: center;
+  gap: clamp(2rem, 7vw, 6rem);
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+}
+
+h1 {
+  margin-top: 0.5rem;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 750;
+  letter-spacing: -0.07em;
+  line-height: 1.05;
+}
+
+.role {
+  margin-top: 0.55rem;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 650;
+  line-height: 1.24;
+}
+
+.description {
+  max-width: 57ch;
+  margin-top: 1.2rem;
+  color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
+.intro-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.3rem;
+  margin-top: 1.65rem;
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.intro-links a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.intro-links .contact-button {
+  padding: 0.65rem 1rem;
+  border-radius: 0.45rem;
+  color: var(--on-accent);
+  background: var(--accent);
+  text-decoration: none;
+}
+
+.contact-button:hover {
+  text-decoration: underline;
+}
+
+.portrait {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-fit: cover;
+  object-position: center 34%;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+}
+
+@media (max-width: 640px) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .portrait {
+    width: min(48%, 10rem);
+    aspect-ratio: 1;
+    object-position: center 30%;
+  }
+}
+</style>
+
 <i18n lang="yaml">
 en:
-  title: About Me
-  jobTitle: Full Stack Software Engineer
-  country: United States
-  description: >
-    Experienced Full-Stack Software Engineer/Team Lead with 8 years of experience in React.js, Java, and Scrum. 
-    Proven ability to develop high-quality, scalable applications and automation solutions. 
-    Proven track record of team leadership and project management.
+  eyebrow: Engineering portfolio
+  jobTitle: Senior Full Stack Software Engineer
+  description: >-
+    I build web products and the APIs that power them. At headwire.com, Inc., I work
+    across TypeScript, Java, and Adobe Experience Manager, taking features from
+    technical design through production. I’ve also led engineering teams and helped
+    them ship faster with better tooling and build workflows.
+  contact: Get in touch
 de:
-  title: Über Mich
-  jobTitle: Full Stack Software Engineer
-  country: Vereinigte Staaten
-  description: >
-    Erfahrener Full-Stack-Softwareentwickler/Teamleiter mit 8 Jahren Erfahrung in React.js, Java und Scrum. 
-    Nachgewiesene Fähigkeit zur Entwicklung hochwertiger, skalierbarer Anwendungen und Automatisierungslösungen. 
-    Bewährte Erfolgsbilanz in der Teamführung und im Projektmanagement.
+  eyebrow: Portfolio
+  jobTitle: Senior Full Stack Software Engineer
+  description: >-
+    Ich entwickle Webanwendungen und die dazugehörigen APIs. Bei headwire.com, Inc.
+    setze ich mit TypeScript, Java und Adobe Experience Manager Funktionen vom
+    technischen Entwurf bis zum Produktivbetrieb um. Außerdem habe ich
+    Entwicklungsteams geleitet und ihre Arbeit mit besseren Tools und kürzeren
+    Build-Zeiten erleichtert.
+  contact: Kontakt aufnehmen
 </i18n>

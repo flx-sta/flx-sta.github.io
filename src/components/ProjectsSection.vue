@@ -1,226 +1,167 @@
 <template>
-  <SectionWrapper :title="t('title')">
-    <div
-      class="project-card-wrapper grid lg:grid-cols-2 grid-cols-1 gap-5 mt-10"
-    >
-      <ProjectCard v-for="project in projects" v-bind="project" :key="project.title">
-        <div v-html="project.description"></div>
-      </ProjectCard>
+  <SectionWrapper :title="t('title')" :description="t('description')">
+    <div class="project-grid">
+      <ProjectCard
+        v-for="project in projects"
+        :key="project.title"
+        :title="project.title"
+        :description="t(project.key)"
+        :tags-label="t('technologies')"
+        :tags="project.tags"
+        :links="project.links.map(({ label, url }) => ({ label: t(label), url }))"
+      />
     </div>
+    <details class="archive">
+      <summary>{{ t('archive') }}</summary>
+      <ul>
+        <li v-for="project in archive" :key="project.url">
+          <a :href="project.url">{{ project.title }}</a>
+        </li>
+      </ul>
+    </details>
   </SectionWrapper>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { defineComponent } from 'vue';
+import { useI18n } from 'vue-i18n';
 import ProjectCard from './ProjectCard.vue';
 import SectionWrapper from './SectionWrapper.vue';
-import { useI18n } from 'vue-i18n';
+
+const projects = [
+  {
+    key: 'pokerogue',
+    title: 'PokéRogue',
+    tags: ['TypeScript', 'Phaser', 'Localization'],
+    links: [
+      { label: 'github', url: 'https://github.com/pagefaultgames/pokerogue' },
+      { label: 'contribution', url: 'https://github.com/pagefaultgames/pokerogue/pull/4583' },
+      { label: 'website', url: 'https://pokerogue.net/' },
+    ],
+  },
+  {
+    key: 'peregrine',
+    title: 'Peregrine CMS',
+    tags: ['Vue.js', 'Java', 'Apache Sling'],
+    links: [
+      { label: 'github', url: 'https://github.com/headwirecom/peregrine-cms' },
+      { label: 'contribution', url: 'https://github.com/headwirecom/peregrine-cms/pull/935' },
+    ],
+  },
+  {
+    key: 'memmy',
+    title: 'Memmy for Lemmy',
+    tags: ['React Native', 'TypeScript'],
+    links: [
+      { label: 'github', url: 'https://github.com/Memmy-App/memmy' },
+      { label: 'contribution', url: 'https://github.com/Memmy-App/memmy/pull/946' },
+    ],
+  },
+  {
+    key: 'flashpoint',
+    title: 'Flashpoint Launcher',
+    tags: ['Electron', 'TypeScript'],
+    links: [
+      { label: 'github', url: 'https://github.com/FlashpointProject/launcher' },
+      { label: 'contribution', url: 'https://github.com/FlashpointProject/launcher/pull/234' },
+      { label: 'website', url: 'https://flashpointarchive.org/' },
+    ],
+  },
+];
+
+const archive = [
+  { title: 'RaftModding', url: 'https://www.raftmodding.com/' },
+  { title: 'COVID-19 Dashboard', url: 'https://github.com/flx-sta/simple-covid-dashboard' },
+];
 
 export default defineComponent({
-  components: {
-    SectionWrapper,
-    ProjectCard,
-  },
+  components: { ProjectCard, SectionWrapper },
   setup() {
     const { t } = useI18n({ inheritLocale: true });
-
-    const projects = computed(() => [
-      {
-        title: 'Pokerogue',
-        img: 'https://pokerogue.net/logo512.png',
-        description: t(`pokerogue.description`),
-        tags: [
-          { title: 'phaser' },
-          { title: 'ts' },
-        ],
-        links: [
-          {
-            title: 'GitHub',
-            url: 'https://github.com/pagefaultgames/pokerogue',
-            icon: ['fab', 'github'],
-          },
-          {
-            title: t('Website'),
-            url: 'https://pokerogue.net/',
-            icon: ['fas', 'link'],
-          }
-        ],
-      },
-       {
-        title: 'Memmy App',
-        img: 'https://avatars.githubusercontent.com/u/138403836?s=48&v=4',
-        description: t(`memmy.description`),
-        tags: [
-          { title: 'iOS', icon: ['fab', 'apple'] },
-          { title: 'react-native', icon: ['fab', 'react'] },
-          { title: 'ts' },
-        ],
-        links: [
-          {
-            title: 'GitHub',
-            url: 'https://github.com/Memmy-App/memmy',
-            icon: ['fab', 'github'],
-          },
-          {
-            title: t('Website'),
-            url: 'https://apps.apple.com/de/app/memmy-for-lemmy/id6450204299',
-            icon: ['fas', 'link'],
-          }
-        ],
-      },
-      {
-        title: 'RaftModding',
-        img: 'https://www.raftmodding.com/images/raftmodding.png',
-        description: t(`raftmodding.description`),
-        tags: [
-          { title: 'vue3', icon: ['fab', 'vuejs'] },
-          { title: 'ts' },
-          { title: 'scss', icon: ['fab', 'sass'] },
-          { title: 'nodejs', icon: ['fab', 'node-js'] },
-        ],
-        links: [
-          {
-            title: 'GitHub',
-            url: 'https://github.com/raftmodding/web-monorepo',
-            icon: ['fab', 'github'],
-          },
-          {
-            title: t('Website'),
-            url: 'https://www.raftmodding.com/',
-            icon: ['fas', 'link'],
-          },
-        ],
-      },
-      {
-        title: 'peregrine-cms',
-        img: 'https://www.peregrine-cms.com/content/peregrine_cms/assets/media/peregrine_logo.svg',
-        tags: [
-          { title: 'vue2', icon: ['fab', 'vuejs'] },
-          { title: 'js', icon: ['fab', 'js'] },
-          { title: 'scss', icon: ['fab', 'sass'] },
-          { title: 'java', icon: ['fab', 'java'] },
-        ],
-        links: [
-          {
-            title: 'GitHub',
-            url: 'https://github.com/headwirecom/peregrine-cms',
-            icon: ['fab', 'github'],
-          },
-          {
-            title: t('Website'),
-            url: 'https://www.peregrine-cms.com',
-            icon: ['fas', 'link'],
-          },
-        ],
-        description: t(`peregrineCms.description`),
-      },
-      {
-        title: 'portfolio',
-        img: 'https://raw.githubusercontent.com/Felix-Staud/portfolio/main/src/assets/logo.svg',
-        description: t(`portfolio.description`),
-        tags: [
-          { title: 'vue3', icon: ['fab', 'vuejs'] },
-          { title: 'ts' },
-          { title: 'tailwind' },
-        ],
-        links: [
-          {
-            title: 'GitHub',
-            url: 'https://github.com/Felix-Staud/portfolio',
-            icon: ['fab', 'github'],
-          },
-          {
-            title: t('Website'),
-            url: 'https://felix-staud.github.io/',
-            icon: ['fas', 'link'],
-          },
-        ],
-      },
-      {
-        title: 'FlashpointProject/launcher',
-        img: 'https://bluemaxima.org/flashpoint/images/logo.svg',
-        description: t(`flashpointProject.launcher.description`),
-        tags: [{ title: 'ts' }, { title: 'css', icon: ['fab', 'css3'] }],
-        links: [
-          {
-            title: 'GitHub',
-            url: 'https://github.com/FlashpointProject/launcher',
-            icon: ['fab', 'github'],
-          },
-          {
-            title: t('Website'),
-            url: 'http://bluemaxima.org/flashpoint/',
-            icon: ['fas', 'link'],
-          },
-        ],
-      },
-      {
-        title: 'simple-covid-dashboard',
-        img: 'https://raw.githubusercontent.com/Felix-Staud/simple-covid-dashboard/main/public/favicon.ico',
-        description: t(`simpleCovidDashboard.description`),
-        tags: [
-          { title: 'react', icon: ['fab', 'react'] },
-          { title: 'ts' },
-          { title: 'css', icon: ['fab', 'css3'] },
-        ],
-        links: [
-          {
-            title: 'GitHub',
-            url: 'https://github.com/Felix-Staud/simple-covid-dashboard',
-            icon: ['fab', 'github'],
-          },
-          {
-            title: t('Website'),
-            url: 'https://felix-staud.github.io/simple-covid-dashboard/',
-            icon: ['fas', 'link'],
-          }
-        ],
-      },
-    ]);
-
-    return {
-      projects,
-      t,
-    };
+    return { t, projects, archive };
   },
 });
 </script>
 
+<style scoped>
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.archive {
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.archive summary {
+  width: fit-content;
+  cursor: pointer;
+  font-weight: 650;
+}
+
+.archive ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.25rem;
+  margin-top: 0.65rem;
+}
+
+.archive a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 640px) {
+  .project-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+</style>
+
 <i18n lang="yaml">
 en:
-  title: Projects
-  Website: Website
-  pokerogue:
-    description: A Pokémon fangame heavily inspired by the roguelite genre. Around 70k concurrent users (CCU). 
-  raftmodding:
-    description: A website to share mods/tools for the Videogame Raft.
-  peregrineCms:
-    description: An api first, head optional cms with based on vuejs and apache sling.
-  portfolio:
-    description: The GitHub project for this website. Auto deployment via github-actions.
-  flashpointProject:
-    launcher:
-      description: The Flashpoint Launcher (FPL) is a desktop application made for browsing, storing and launching other applications (games, animations, web apps etc.). It is specifically made for BlueMaxima's Flashpoint, which is a web preservation project.
-  simpleCovidDashboard:
-    description: A simple dashboard that grabs the current worldwide covid19 numbers and displays them. Additionally you can load the numbers of freely choosable country via an input at the top.
-  memmy:
-    description: An Apollo inspired open-source iOS client for Lemmy built with React-Native.
+  title: Selected work
+  description: Open source projects I’ve contributed to.
+  technologies: Technologies
+  github: GitHub
+  contribution: Example PR
+  website: Website
+  archive: Older projects
+  pokerogue: >-
+    A browser game inspired by Pokémon and roguelites. I refactored the
+    game’s API client and helped introduce Mozilla Pontoon for localization.
+  peregrine: >-
+    A CMS built on Apache Sling and Vue. I integrated CodeMirror into
+    its structured content editor.
+  memmy: >-
+    A mobile client for Lemmy inspired by Apollo. I contributed fixes
+    to the app’s localization.
+  flashpoint: >-
+    A desktop launcher for Flashpoint Archive, which preserves web games
+    and animations. I added sortable columns to the launcher.
 de:
-  title: Projekte
-  Website: Webseite
-  pokerogue:
-    description: Ein Pokémon fangame, stark inspiriert durch das roguelite genre.
-  raftmodding:
-    description: Eine Webseite um Mods/Tools für das Computerspiel Raft zu teilen.
-  peregrineCms:
-    description: Eine API-first, head optional CMS das auf Vue.js und Apache-Sling basiert.
-  portfolio:
-    description: Das GitHub Projekt für diese Webseite. Automatisches deployment via github-actions.
-  flashpointProject:
-    launcher:
-      description: Der Flashpoint Launcher (FPL) ist eine Desktop Applikation zum durchsuchen, speichern und starten anderer Applikationen (Games, Animationen, Webapps etc.). Es wurde speziell für BlueMaxima's Flashpoint gemacht, welches ein "web preservation" Projekt ist.
-  simpleCovidDashboard:
-    description: Ein simples Dashboard das die aktuellen weltweiten COVID19 Zahlen ausgibt. Über ein Eingabefeld kann außerdem ein Land ausgewählt werden um die Daten dieses Landes zu erhalten.
-  memmy:
-    description: Ein von "Apollo" inspirierter open-source iOS client für lemmy. Gebaut mit React-Native.
+  title: Ausgewählte Projekte
+  description: Open-Source-Projekte, zu denen ich beigetragen habe.
+  technologies: Technologien
+  github: GitHub
+  contribution: Beispiel-PR
+  website: Website
+  archive: Ältere Projekte
+  pokerogue: >-
+    Ein von Pokémon und Roguelites inspiriertes Browserspiel. Ich habe
+    den API-Client überarbeitet und Mozilla Pontoon für die Lokalisierung
+    mit eingeführt.
+  peregrine: >-
+    Ein CMS auf Basis von Apache Sling und Vue. Ich habe CodeMirror
+    in den Editor für strukturierte Inhalte integriert.
+  memmy: >-
+    Ein von Apollo inspirierter mobiler Client für Lemmy. Ich habe
+    Fehler in der Lokalisierung der App behoben.
+  flashpoint: >-
+    Ein Desktop-Launcher für Flashpoint Archive, ein Archiv für
+    Webspiele und Animationen. Ich habe sortierbare Spalten hinzugefügt.
 </i18n>

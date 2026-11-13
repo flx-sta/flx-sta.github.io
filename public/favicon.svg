@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="#13634c" stroke="#73b49b" stroke-width="2"/>
+  <!-- Tabler Icons: braces. See tabler-icons-license.txt. -->
+  <g transform="translate(5.6 5.6) scale(2.2)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2"/>
+    <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2"/>
+  </g>
+  <path d="m32 25 7 7-7 7-7-7Z" fill="#b1f2d0"/>
+</svg>
