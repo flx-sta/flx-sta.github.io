@@ -1,0 +1,48 @@
+.projectCard {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1.15rem, 3vw, 1.65rem);
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: var(--surface);
+}
+.projectCard h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.projectCard p {
+  margin-top: 0.45rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.tags,
+.projectLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+}
+.tags {
+  margin-block: 1rem;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+.tags li {
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.3rem;
+  background: var(--accent-soft);
+}
+.projectLinks {
+  gap: 0.5rem 1rem;
+  margin-top: auto;
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+.projectLinks a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

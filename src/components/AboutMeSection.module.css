@@ -1,0 +1,77 @@
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 18rem);
+  align-items: center;
+  gap: clamp(2rem, 7vw, 6rem);
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+}
+.intro h1 {
+  margin-top: 0.5rem;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 750;
+  letter-spacing: -0.07em;
+  line-height: 1.05;
+}
+.role {
+  margin-top: 0.55rem;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 650;
+  line-height: 1.24;
+}
+.description {
+  max-width: 57ch;
+  margin-top: 1.2rem;
+  color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+.introLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.3rem;
+  margin-top: 1.65rem;
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.introLinks a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.introLinks .contactButton {
+  padding: 0.65rem 1rem;
+  border-radius: 0.45rem;
+  color: var(--on-accent);
+  background: var(--accent);
+  text-decoration: none;
+}
+.contactButton:hover {
+  text-decoration: underline;
+}
+.portrait {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+}
+.portrait img {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 391%;
+  max-width: none;
+  height: auto;
+  transform: translate(-43.25%, -32.25%);
+}
+@media (max-width: 640px) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+  .portrait {
+    width: min(48%, 10rem);
+    aspect-ratio: 1;
+  }
+}
